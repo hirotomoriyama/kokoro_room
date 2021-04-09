@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     root to: "homes#top"
 
     get "/about" => "homes#about"
+
+    resources :members, only: [:edit, :update] do
+      member do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
+
   end
 
   devise_for :members, controllers: {
