@@ -17,6 +17,7 @@
 回答ユーザ：自分の経験や事実に基づき回答を行うことで投稿ユーザに貢献する
 
 ## 設計書
+- ER図：![er diagram of kokororoom](kokororoom.pdf)
 - テーブル定義書：<https://docs.google.com/spreadsheets/d/15mzxt2WLSoebQSZWbUkkS85od3sn2AEkfnlARnMxiRg/edit#gid=1103207792>
 - アプリケーション詳細設計：<https://docs.google.com/spreadsheets/d/18ZRYB34QpNBsdPuxD5K42SW8rg5RTCGZxvriq3ejUw8/edit#gid=1103207792>
 
