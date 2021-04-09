@@ -22,7 +22,7 @@
 - アプリケーション詳細設計：<https://docs.google.com/spreadsheets/d/18ZRYB34QpNBsdPuxD5K42SW8rg5RTCGZxvriq3ejUw8/edit#gid=1103207792>
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
+<https://docs.google.com/spreadsheets/d/1shkEyJwCbleSk7vb_zrenDIepNJFgTiWnPpfMmIJqHE/edit#gid=0>
 
 ## 開発環境
 - OS：Linux(CentOS)
