@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  namespace :admin do
+
+    get "/" => "homes#top"
+
+  end
+
   scope module: 'public' do
 
     root to: "homes#top"
@@ -32,9 +38,5 @@ Rails.application.routes.draw do
     get '/searches' => "searches#search"
 
   end
-
-
-  # namespace :admin do
-  # end
 
 end
