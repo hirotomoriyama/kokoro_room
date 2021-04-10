@@ -1,0 +1,2 @@
+module Public::AdvicesHelper
+end
