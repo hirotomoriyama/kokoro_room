@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
+  devise_for :admin, controllers: {
     registrations: 'admin/registrations',
     sessions: 'admin/sessions',
     passwords: 'admin/passwords'
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
 
     resources :categories, only: [:index, :create, :edit, :update]
+
+    resources :members, only: [:index, :show, :edit, :update]
 
   end
 
