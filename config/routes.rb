@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+    registrations: 'admin/registrations',
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords'
+  }
+
+  devise_for :members, controllers: {
+    registrations: 'public/registrations',
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   scope module: 'public' do
@@ -22,9 +33,8 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :members, controllers: {
-    registrations: 'public/registrations',
-    sessions: 'public/sessions'
-  }
+
+  # namespace :admin do
+  # end
 
 end
