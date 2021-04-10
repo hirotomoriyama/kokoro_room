@@ -1,0 +1,23 @@
+<% if admin_signed_in? %>
+
+  <%= link_to "kokoro room", root_path %>
+  <%= link_to "会員一覧", admin_members_path %>
+  <%= link_to "悩み一覧", problems_path %>
+  <%= link_to "カテゴリー一覧", admin_categories_path %>
+  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
+<% elsif member_signed_in? %>
+
+  <%= link_to "kokoro room", root_path %>
+  <%= link_to "悩み一覧", problems_path %>
+  <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+
+<% else %>
+
+  <%= link_to "kokoro room", root_path %>
+  <%= link_to "サイトについて", about_path %>
+  <%= link_to "悩み一覧", problems_path %>
+  <%= link_to "新規登録", new_member_registration_path %>
+  <%= link_to "ログイン", new_member_session_path %>
+
+<% end %>
