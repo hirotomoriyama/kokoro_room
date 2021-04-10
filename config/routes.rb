@@ -7,12 +7,9 @@ Rails.application.routes.draw do
 
     get "/about" => "homes#about"
 
-    resources :members, only: [:edit, :update] do
-      member do
-        get 'unsubscribe'
-        patch 'withdraw'
-      end
-    end
+    get "members/unsubscribe" => "members#unsubscribe"
+
+    patch "members/withdraw" => "members#withdraw"
 
   end
 
