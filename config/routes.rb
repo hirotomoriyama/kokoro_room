@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     get "/" => "homes#top"
 
+    resources :categories, only: [:index, :create, :edit, :update]
+
   end
 
   scope module: 'public' do
