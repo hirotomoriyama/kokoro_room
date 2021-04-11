@@ -1,3 +1,4 @@
+<!--管理者ログイン時のヘッダー-->
 <% if admin_signed_in? %>
 
   <%= link_to "kokoro room", root_path %>
@@ -6,12 +7,14 @@
   <%= link_to "カテゴリー一覧", admin_categories_path %>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
 
+<!--会員ログイン時のヘッダー-->
 <% elsif member_signed_in? %>
 
   <%= link_to "kokoro room", root_path %>
   <%= link_to "悩み一覧", problems_path %>
   <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
 
+<!--ユーザーログアウト時のヘッダー-->
 <% else %>
 
   <%= link_to "kokoro room", root_path %>
