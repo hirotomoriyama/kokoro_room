@@ -1,0 +1,7 @@
+<h2>カテゴリー編集</h2>
+
+<!--カテゴリー編集フォーム-->
+<%= form_with model: @category, url: admin_category_path(@category.id), local:true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit '編集' %>
+<% end %>

@@ -13,14 +13,14 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def edit
-    @category = Category.params[:id]
+    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.params[:id]
+    @category = Category.find(params[:id])
     @category.update(category_params)
     # カテゴリー編集後、カテゴリー一覧画面に遷移
-    redirect_to "admin_categories_path"
+    redirect_to admin_categories_path
   end
 
   private

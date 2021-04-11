@@ -1,6 +1,6 @@
 <h2>カテゴリー作成</h2>
 
-<!--カテゴリー作成欄-->
+<!--カテゴリー作成フォーム-->
 <h4>カテゴリー名</h4>
 <%= form_with model: @category, url: admin_categories_path, local:true do |f| %>
   <%= f.text_field :name %>
@@ -13,4 +13,5 @@
 <!--カテゴリー一覧表示-->
 <% @categories.each do |category| %>
   <%= category.name %>
+  <%= link_to '編集', edit_admin_category_path(category.id) %>
 <% end %>
