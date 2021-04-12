@@ -9,4 +9,9 @@ class Member < ApplicationRecord
   has_many :responses, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  # 退会済みのユーザーが同じアカウントでログイン出来ないよう設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end
