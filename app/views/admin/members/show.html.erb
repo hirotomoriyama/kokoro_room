@@ -1,0 +1,13 @@
+<h2><%= @member.name %>さんの会員詳細</h2>
+<h4>会員ID</h4>
+<%= @member.id %>
+<h4>メールアドレス</h4>
+<%= @member.email %>
+<h4>会員ステータス</h4>
+<!--会員ステータスを文字列化-->
+<% if @member.is_deleted == false %>
+  有効
+<% else %>
+　退会
+<% end %>
+<%= link_to '編集', edit_admin_member_path %>
