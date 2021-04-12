@@ -1,0 +1,13 @@
+<h2>会員一覧</h2>
+<% @members.each do |member| %>
+  <%= member.id %>
+  <!--会員名をクリックすると会員詳細画面へ遷移-->
+  <%= link_to member.name, admin_member_path(member) %>
+  <%= member.email %>
+  <!--会員ステータスを文字列化-->
+  <% if member.is_deleted  == false %>
+    有効
+  <% else %>
+    退会
+  <% end %>
+<% end %>
