@@ -1,10 +1,12 @@
 class Public::ProblemsController < Public::ApplicationController
 
   def index
+    @problems = Problem.all
   end
 
   def new
     @problem = Problem.new
+    @categories = Category.all
   end
 
   def create
@@ -24,7 +26,7 @@ class Public::ProblemsController < Public::ApplicationController
 
   # 悩み投稿時、タイトルと本文を入力するための設定
   def problem_params
-    params.require(:problem).permit(:title, :body)
+    params.require(:problem).permit(:title, :body, :category_id)
   end
 
 end
