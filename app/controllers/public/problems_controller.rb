@@ -10,8 +10,10 @@ class Public::ProblemsController < Public::ApplicationController
   end
 
   def create
-    @problem = Problem.new(problem_params)
-    @problem.save
+    problem = Problem.new(problem_params)
+    # ログイン中の会員が投稿
+    problem.member_id = current_member.id
+    problem.save
     # 悩み投稿後、トップページ（マイページ）へ遷移
     redirect_to root_path
   end
@@ -24,7 +26,7 @@ class Public::ProblemsController < Public::ApplicationController
 
   private
 
-  # 悩み投稿時、タイトルと本文を入力するための設定
+  # 悩み投稿時、タイトルと本文を入力、カテゴリーを選択するための設定
   def problem_params
     params.require(:problem).permit(:title, :body, :category_id)
   end
