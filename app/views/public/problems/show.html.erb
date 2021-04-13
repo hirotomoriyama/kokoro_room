@@ -1,0 +1,16 @@
+<!--悩み事の詳細画面-->
+<h2><%= @problem.member.name %>さんの投稿</h2>
+
+<h4>タイトル</h4>
+<%= @problem.title %>
+
+<h4>悩みの内容</h4>
+<%= @problem.body %>
+
+<h4>カテゴリー</h4>
+<%= @problem.category.name %>
+
+<!--自分の投稿であれば削除リンクが表示-->
+<% if @problem.member_id == current_member.id %>
+  <%= link_to '削除', problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+<% end %>

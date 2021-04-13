@@ -4,14 +4,14 @@
 
   <h4><%= problem.member.name %>さんの投稿</h4>
 
-  <h4>カテゴリー</h4>
-  <%= problem.category.name %>
-
   <h4>タイトル</h4>
   <!--タイトルをクリックすると悩み事詳細画面へ遷移-->
   <%= link_to problem.title, problem_path(problem.id) %>
 
   <h4>悩みの内容</h4>
   <%= problem.body %>
+
+  <h4>カテゴリー</h4>
+  <%= problem.category.name %>
 
 <% end %>

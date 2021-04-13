@@ -19,9 +19,14 @@ class Public::ProblemsController < Public::ApplicationController
   end
 
   def show
+    @problem = Problem.find(params[:id])
   end
 
   def destroy
+    @problem = Problem.find(params[:id])
+    @problem.destroy
+    # 悩み削除後、トップページ（マイページ）へ遷移
+    redirect_to root_path
   end
 
   private
