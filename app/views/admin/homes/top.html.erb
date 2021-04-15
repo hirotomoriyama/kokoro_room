@@ -1,1 +1,18 @@
-あ
+<h2>悩み一覧</h2>
+
+<% @problems.each do |problem| %>
+
+  <h4>会員名</h4>
+  <!--会員名をクリックすると会員詳細画面に遷移-->
+  <%= link_to problem.member.name, admin_member_path(problem.member_id) %>
+
+  <h4>タイトル</h4>
+  <%= problem.title %>
+
+  <h4>悩み内容</h4>
+  <%= problem.body %>
+
+  <h4>カテゴリー</h4>
+  <%= problem.category.name %>
+
+<% end %>
