@@ -1,5 +1,8 @@
 class Public::AdvicesController < Public::ApplicationController
 
+  def new
+  end
+
   def create
   end
 

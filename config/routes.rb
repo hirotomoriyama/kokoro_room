@@ -33,8 +33,8 @@ Rails.application.routes.draw do
     patch "members/withdraw" => "members#withdraw"
 
     resources :problems, except: [:edit, :update] do
-      resources :advices, only: [:create, :destroy] do
-        resources :responses, only: [:create, :destroy]
+      resources :advices, only: [:new, :create, :destroy] do
+        resources :responses, only: [:new, :create, :destroy]
         resource :favorites, only: [:create, :destroy]
       end
     end
