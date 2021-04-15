@@ -1,0 +1,38 @@
+<!--会員ログイン時はログインユーザーの悩み履歴一覧を表示-->
+<% if member_signed_in? %>
+
+
+<h2><%= @member.name %>さんの悩み履歴一覧</h2>
+
+<%= link_to '悩みを投稿', new_problem_path %>
+
+  <% @problems.each do |problem| %>
+
+    <h4>タイトル</h4>
+    <!--タイトルをクリック時、悩み事の詳細画面へ遷移-->
+    <%= link_to problem.title, problem_path(problem.id) %>
+
+    <h4>悩みの内容</h4>
+    <%= problem.body %>
+
+    <h4>カテゴリー</h4>
+    <%= problem.category.name %>
+
+
+  <% end %>
+
+退会手続きは<%= link_to 'こちら', members_unsubscribe_path %>から出来ます。
+
+<!--会員未登録時、ログアウト時は新規登録、ログインのリンクをそれぞれ表示-->
+<% else %>
+
+<h2>kokoro roomとは?</h2>
+
+  <p>
+    ここは会員制です。<br>
+    ご利用の方は<%= link_to 'こちら', new_member_registration_path %>から新規登録して下さい。<br>
+    登録済みの方は<%= link_to 'こちら', new_member_session_path %>からログインして下さい。
+  </p>
+
+
+<% end %>
