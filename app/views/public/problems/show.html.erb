@@ -10,7 +10,35 @@
 <h4>カテゴリー</h4>
 <%= @problem.category.name %>
 
-<!--自分の投稿であれば削除リンクが表示-->
+<!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
 <% if @problem.member_id == current_member.id %>
   <%= link_to '削除', problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+<% end %>
+
+<!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
+<% if @problem.member_id != current_member.id %>
+  <%= link_to '回答を投稿', new_problem_advice_path(@problem.id) %>
+<% end %>
+
+<!--回答がある場合-->
+<% if @problem.advices.present? %>
+
+  <% @problem.advices.each do |advice| %>
+
+  <h2><%= advice.member.name %>さんからの回答</h2>
+
+    <%= advice.body %>
+
+      <!--回答の投稿者であれば、回答の削除リンクが表示-->
+    <% if advice.member_id == current_member.id %>
+      <%= link_to '回答の削除', problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?"  %>
+    <% end %>
+
+  <% end %>
+
+<!--回答が無い場合-->
+<% else %>
+
+  <h2>回答はまだありません。</h2>
+
 <% end %>
