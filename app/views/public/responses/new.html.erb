@@ -1,0 +1,10 @@
+<h2>返事の投稿</h2>
+
+<%= form_with model: @response, url: problem_advice_responses_path(@advice.id), local:true do |f| %>
+
+  <h4>返事の内容</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
