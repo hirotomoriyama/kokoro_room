@@ -17,6 +17,10 @@ class Public::ResponsesController < Public::ApplicationController
   end
 
   def destroy
+    response = Response.find(params[:advice_id])
+    response.destroy
+    # 返事削除後、同じ画面に遷移
+    redirect_back(fallback_location: root_path)
   end
 
   private

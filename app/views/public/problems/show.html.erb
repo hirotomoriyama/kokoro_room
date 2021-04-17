@@ -48,6 +48,11 @@
 
         <%= response.body %>
 
+        <!--返事の投稿者であれば、返事の削除リンクが表示-->
+        <% if response.member_id == current_member.id %>
+          <%= link_to '返事の削除', problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+        <% end %>
+
       <% end %>
 
     <!--返事が無い場合-->
