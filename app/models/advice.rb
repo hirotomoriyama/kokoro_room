@@ -6,4 +6,9 @@ class Advice < ApplicationRecord
   has_many :responses, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  # favoritesテーブルに「member_id」が存在するかを検索
+  def favorited_by?(member)
+    favorites.where(member_id: member.id).exists?
+  end
+
 end
