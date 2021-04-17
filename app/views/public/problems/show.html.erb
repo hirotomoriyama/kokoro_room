@@ -36,7 +36,28 @@
 
     <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
     <% if @problem.member_id == current_member.id %>
-      <%= link_to '返事の投稿', new_problem_advice_response_path(advice.id) %>
+      <%= link_to '返事を投稿', new_problem_advice_response_path(@problem, advice_id: advice.id) %>
+    <% end %>
+
+    <!--返事がある場合-->
+    <% if advice.responses.present? %>
+
+      <% advice.responses.each do |response| %>
+
+        <h2><%= response.member.name %>さんからの返事</h2>
+
+        <%= response.body %>
+
+      <% end %>
+
+    <!--返事が無い場合-->
+    <% else %>
+
+    <!--返事が無く回答がある場合-->
+      <% if @problem.advices.present? %>
+        <h2>返事はまだありません。</h2>
+      <% end %>
+
     <% end %>
 
   <% end %>
@@ -45,26 +66,5 @@
 <% else %>
 
   <h2>回答はまだありません。</h2>
-
-<% end %>
-
-<!--返事がある場合-->
-<% if @problem.member.responses.present? %>
-
-  <% @problem.member.responses.each do |response| %>
-
-  <h2><%= response.member.name %>さんからの回答</h2>
-
-    <%= response.body %>
-
-  <% end %>
-
-<!--返事が無い場合-->
-<% else %>
-
-  <!--返事が無く回答がある場合-->
-  <% if @problem.advices.present? %>
-    <h2>返事はまだありません。</h2>
-  <% end %>
 
 <% end %>
