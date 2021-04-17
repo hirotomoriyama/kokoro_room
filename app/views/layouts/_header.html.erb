@@ -15,7 +15,7 @@
   <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
   <!--悩み事検索フォームの表示-->
   <%= form_tag(searches_path, method: :get) do %>
-    <%= select_tag 'search[model]', options_for_select({"悩み事の検索" => "problem"}) %>
+    <%= select_tag 'search[model]', options_for_select({"タイトルから悩み事の検索" => "problem"}) %>
     <%= text_field_tag 'search[content]' %>
     <%= select_tag 'search[how]', options_for_select({"完全一致"=>"match", "部分一致"=>"partical"}) %>
     <%= submit_tag '検索' %>
