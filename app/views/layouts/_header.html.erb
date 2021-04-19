@@ -1,7 +1,7 @@
 <!--管理者ログイン時のヘッダー-->
 <% if admin_signed_in? %>
 
-<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+<nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
   <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
@@ -27,7 +27,7 @@
 <!--会員ログイン時のヘッダー-->
 <% elsif member_signed_in? %>
 
-<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+<nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
   <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
@@ -59,7 +59,7 @@
 <!--ユーザーログアウト時のヘッダー-->
 <% else %>
 
-<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+<nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
   <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">

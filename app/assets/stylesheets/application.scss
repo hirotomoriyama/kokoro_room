@@ -17,7 +17,17 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body{
   background-color: #fdede4;
   background-image: image-url("hoge.jpg");
+}
+
+a:hover{
+  text-decoration: none;
 }
