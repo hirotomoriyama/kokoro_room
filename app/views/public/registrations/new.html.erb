@@ -1,34 +1,48 @@
-<h2>Sign up</h2>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">会員新規登録</h2>
+    </div>
+  </div>
 
 <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
   <%= render "devises/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+  <div class="row field pl-5 pb-3">
+    <%= f.label :name, "ニックネーム", class:"col-3" %><br />
+    <%= f.text_field :name, autofocus: true, class:"col-3", placeholder:"ココロ タロウ" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row field pl-5 pb-3">
+    <%= f.label :email, "メールアドレス", class:"col-3" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="row field pl-5 pb-3">
+    <%= f.label :password, "パスワード（６文字以上）", class:"col-3" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em><% @minimum_password_length %></em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"col-3" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row field pl-5 pb-3">
+    <%= f.label :password_confirmation, "パスワード（確認用）", class:"col-3" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-3" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row actions mr-5 pl-5 pb-3">
+    <div class="offset-3 col-2">
+    <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
+      <i class="fas fa-user-plus"></i> 登録
+    <% end %>
+    </div>
   </div>
 <% end %>
 
-<%= render "devises/shared/links" %>
+  <div class="row pl-5">
+    登録済みの方は<%= link_to 'こちら', new_member_session_path %>からログインして下さい。
+  </div>
+
+</div>
