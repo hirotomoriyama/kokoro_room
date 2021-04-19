@@ -1,33 +1,90 @@
 <!--管理者ログイン時のヘッダー-->
 <% if admin_signed_in? %>
 
-  <%= link_to "kokoro room", root_path %>
-  <%= link_to "会員一覧", admin_members_path %>
-  <%= link_to "悩み一覧", problems_path %>
-  <%= link_to "カテゴリー一覧", admin_categories_path %>
-  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+<div class="collapse navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item pl-3">
+      <%= link_to admin_members_path, class:"nav-link" do %>
+        <i class="fas fa-user-alt"></i> 会員一覧
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to admin_categories_path, class:"nav-link" do %>
+        <i class="fas fa-sort"></i> カテゴリ一覧
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link" do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+  </ul>
+</div>
+</nav>
 
 <!--会員ログイン時のヘッダー-->
 <% elsif member_signed_in? %>
 
-  <%= link_to "kokoro room", root_path %>
-  <%= link_to "悩み一覧", problems_path %>
-  <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-  <!--悩み事検索フォームの表示-->
-  <%= form_tag(searches_path, method: :get) do %>
-    <%= select_tag 'search[model]', options_for_select({"タイトルから悩み事の検索" => "problem"}) %>
-    <%= text_field_tag 'search[content]' %>
-    <%= select_tag 'search[how]', options_for_select({"完全一致"=>"match", "部分一致"=>"partical"}) %>
-    <%= submit_tag '検索' %>
-  <% end %>
+<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+<div class="collapse navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item pl-3">
+      <%= link_to problems_path, class:"nav-link" do %>
+        <i class="far fa-frown"></i> 悩み事一覧
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to destroy_member_session_path, method: :delete, class:"nav-link" do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+    <!--悩み事検索フォームの表示-->
+    <li class="nav-item form-inline pl-3 navbar-right">
+      <%= form_tag(searches_path, method: :get) do %>
+      <%= select_tag 'search[model]', options_for_select({"タイトルから悩み事の検索" => "problem"}), class:"form-control form-control-sm" %>
+        <%= text_field_tag('search[content]', "", {class:"form-control form-control-sm", placeholder:"ここに入力して下さい"}) %>
+        <%= select_tag 'search[how]', options_for_select({"完全一致"=>"match", "部分一致"=>"partical"}), class:"form-control form-control-sm" %>
+        <%= button_tag :type => "submit", :class =>"form-control form-control-sm" do %>
+          <i class="fa fa-search"></i>検索
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+</nav>
 
 <!--ユーザーログアウト時のヘッダー-->
 <% else %>
 
-  <%= link_to "kokoro room", root_path %>
-  <%= link_to "サイトについて", about_path %>
-  <%= link_to "悩み一覧", problems_path %>
-  <%= link_to "新規登録", new_member_registration_path %>
-  <%= link_to "ログイン", new_member_session_path %>
+<nav class="navbar navbar-expand navbar-dark" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
+  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+<div class="collapse navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item pl-3">
+      <%= link_to about_path, class:"nav-link" do %>
+        <i class="fas fa-info-circle"></i> サイトについて
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to problems_path, class:"nav-link" do %>
+        <i class="far fa-frown"></i> 悩み事一覧
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to new_member_registration_path, class:"nav-link" do %>
+        <i class="fas fa-user-plus"></i> 新規登録
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to new_member_session_path, class:"nav-link" do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+      <% end %>
+    </li>
+  </ul>
+</div>
+</nav>
 
 <% end %>
