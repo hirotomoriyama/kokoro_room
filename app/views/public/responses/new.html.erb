@@ -1,10 +1,26 @@
-<h2>返事の投稿</h2>
+<div class="container">
 
-<%= form_with model: @response, url: problem_advice_responses_path(@advice.id), local:true do |f| %>
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">返事の投稿</h2>
+    </div>
+  </div>
 
-  <h4>返事の内容</h4>
-  <%= f.text_area :body %>
+  <%= form_with model: @response, url: problem_advice_responses_path(@advice.id), local:true do |f| %>
 
-  <%= f.submit '投稿' %>
+  <div class="row pl-5 pb-3">
+    <%= f.label :body, "返事の内容", class:"col-3" %><br />
+    <%= f.text_area :body, class:"col-3", placeholder:"返事の内容を入力してください" %>
+  </div>
+
+  <div class="row mr-5 pl-5 pb-3">
+    <div class="offset-3 col-2">
+      <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
+        <i class="fas fa-plus-circle"></i> 投稿
+      <% end %>
+    </div>
+  </div>
 
 <% end %>
+
+</div>
