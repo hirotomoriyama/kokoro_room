@@ -1,17 +1,38 @@
-<h2>会員一覧</h2>
-<h4>会員ID</h4>
-<h4>会員名</h4>
-<h4>メールアドレス</h4>
-<h4>会員ステータス</h4>
-<% @members.each do |member| %>
-  <%= member.id %>
-  <!--会員名をクリックすると会員詳細画面へ遷移-->
-  <%= link_to member.name, admin_member_path(member) %>
-  <%= member.email %>
-  <!--会員ステータスを文字列化-->
-  <% if member.is_deleted  == false %>
-    有効
-  <% else %>
-    退会
-  <% end %>
-<% end %>
+<div class="container pb-5">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">会員一覧</h2>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>会員名</th>
+        <th>メールアドレス</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <!--会員名をクリックすると会員詳細画面へ遷移-->
+        <td><%= link_to member.name, admin_member_path(member) %></td>
+        <td><%= member.email %></td>
+        <!--会員ステータスを文字列化-->
+        <td>
+          <% if member.is_deleted  == false %>
+            有効
+          <% else %>
+            退会
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
