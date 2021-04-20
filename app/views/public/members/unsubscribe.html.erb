@@ -1,7 +1,30 @@
-<h2>退会手続き</h2>
-<p>
-  退会手続きをされますと、全サービスが利用出来なくなります。<br>
-  本当に退会しますか?
-</p>
-<%= link_to '退会する', members_withdraw_path, method: :patch %>
-<%= link_to '退会しない', root_path %>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">退会手続き</h2>
+    </div>
+  </div>
+
+  <div class="row pl-5">
+    <p class="text-center pl-5">
+      退会手続きをされますと、全サービスが利用出来なくなります。<br>
+      退会する場合は、「退会する」をクリックして下さい。
+    </p>
+  </div>
+
+  <div class="row pl-5">
+    <div class="col-2 ml-5">
+      <%= link_to root_path, class:"btn btn-primary" do %>
+        <i class="fas fa-door-closed"></i> 退会しない
+      <% end %>
+    </div>
+
+    <div class="col-2 ml-3">
+      <%= link_to members_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class:"btn btn-danger" do %>
+        <i class="fas fa-door-open"></i> 退会する
+      <% end %>
+    </div>
+  </div>
+
+</div>
