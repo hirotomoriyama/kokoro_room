@@ -1,17 +1,44 @@
-<h2>カテゴリー作成</h2>
+<div class="container pb-5">
 
-<!--カテゴリー作成フォーム-->
-<h4>カテゴリー名</h4>
-<%= form_with model: @category, url: admin_categories_path, local:true do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit '作成' %>
-<% end %>
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">カテゴリー作成</h2>
+    </div>
+  </div>
 
+  <!--カテゴリー作成フォーム-->
+  <div class="row pl-5">
+  <%= form_with model: @category, url: admin_categories_path, local:true do |f| %>
+    <%= f.label :name, "カテゴリー名", class:"col-4" %>
+    <%= f.text_field :name, class:"col-7", placeholder:"ここに入力" %>
+    <%= button_tag :type => "submit", :class => "offset-4 col-3 form-control form-control-sm btn btn-success" do %>
+      <i class="fas fa-plus-circle"></i> 作成
+    <% end %>
+  <% end %>
+  </div>
 
-<h2>カテゴリー一覧</h2>
+  <h5 class="row pt-5 pl-5">カテゴリー一覧</h5>
 
-<!--カテゴリー一覧表示-->
-<% @categories.each do |category| %>
-  <%= category.name %>
-  <%= link_to '編集', edit_admin_category_path(category.id) %>
-<% end %>
+  <!--カテゴリー一覧表示-->
+  <table class="table table-hover w-50">
+    <thead>
+      <tr>
+        <th>カテゴリー名</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to edit_admin_category_path(category.id), class:"btn btn-success" do %>
+            <i class="fas fa-edit"></i> 編集
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
