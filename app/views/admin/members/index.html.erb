@@ -10,7 +10,7 @@
     <thead>
       <tr>
         <th>会員ID</th>
-        <th>会員名</th>
+        <th>ニックネーム</th>
         <th>メールアドレス</th>
         <th>会員ステータス</th>
       </tr>
@@ -25,9 +25,9 @@
         <!--会員ステータスを文字列化-->
         <td>
           <% if member.is_deleted  == false %>
-            有効
+            <span class="text-success">有効</span>
           <% else %>
-            退会
+            <span class="text-secondary">退会</span>
           <% end %>
         </td>
       </tr>
