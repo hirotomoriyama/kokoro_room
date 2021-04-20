@@ -1,12 +1,31 @@
-<h2><%= @member.name %>さんの会員情報編集</h2>
-<h4>会員ID</h4>
-<%= @member.id %>
-<h4>メールアドレス</h4>
-<%= @member.email %>
-<h4>会員ステータス</h4>
-<!--ラジオボタンで有効か退会か選択-->
-<%= form_with model: @member, url: admin_member_path(@member.id), method: :patch, local:true do |f| %>
-  <%= f.radio_button :is_deleted, :false %>有効
-  <%= f.radio_button :is_deleted, :true %>退会
-  <%= f.submit '変更を保存' %>
-<% end %>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded"><%= @member.name %>さんの会員情報編集</h2>
+    </div>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">会員ID</h5>
+    <p class="col-3"><%= @member.id %></p>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">メールアドレス</h4>
+    <p class="col-3"><%= @member.email %></p>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">会員ステータス</h5>
+    <!--ラジオボタンで有効か退会か選択-->
+    <%= form_with model: @member, url: admin_member_path(@member.id), class:"col-3", method: :patch, local:true do |f| %>
+      <%= f.radio_button :is_deleted, :false %>有効
+      <%= f.radio_button :is_deleted, :true %>退会
+      <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success w-75 mt-2" do %>
+        <i class="fas fa-save"></i> 変更を保存
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
