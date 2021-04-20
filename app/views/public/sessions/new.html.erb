@@ -6,7 +6,7 @@
     </div>
   </div>
 
-<%= form_with model: @member, url: member_session_path, local:true do |f| %>
+  <%= form_with model: @member, url: member_session_path, local:true do |f| %>
 
   <div class="field row pl-5 pb-3">
     <%= f.label :email, "メールアドレス", class:"col-3" %><br />
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-<% end %>
+  <% end %>
 
   <div class="row pl-5">
     登録がまだの方は<%= link_to 'こちら', new_member_registration_path %>から新規登録して下さい。
