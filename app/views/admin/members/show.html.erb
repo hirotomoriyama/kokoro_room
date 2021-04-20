@@ -1,13 +1,37 @@
-<h2><%= @member.name %>さんの会員詳細</h2>
-<h4>会員ID</h4>
-<%= @member.id %>
-<h4>メールアドレス</h4>
-<%= @member.email %>
-<h4>会員ステータス</h4>
-<!--会員ステータスを文字列化-->
-<% if @member.is_deleted == false %>
-  有効
-<% else %>
-　退会
-<% end %>
-<%= link_to '編集', edit_admin_member_path %>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded"><%= @member.name %>さんの会員詳細</h2>
+    </div>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">会員ID</h5>
+    <p class="col-3"><%= @member.id %></p>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">メールアドレス</h5>
+    <p class="col-3"><%= @member.email %></p>
+  </div>
+
+  <div class="row pl-5">
+    <h5 class="col-3">会員ステータス</h5>
+    <!--会員ステータスを文字列化-->
+    <p class="col-3">
+      <% if @member.is_deleted == false %>
+        <span class="text-success">有効</span>
+      <% else %>
+　      <span class="text-secondary">退会</span>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="row pl-5">
+    <%= link_to edit_admin_member_path, class:"offset-3 col-1 btn btn-success" do %>
+      <i class="fas fa-edit"></i> 編集
+    <% end %>
+  </div>
+
+</div>
