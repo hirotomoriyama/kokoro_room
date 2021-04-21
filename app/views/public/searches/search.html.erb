@@ -1,27 +1,41 @@
-<h2>悩み事の検索結果一覧</h2>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">悩み事の検索結果一覧</h2>
+    </div>
+  </div>
 
 <!--検索結果がある場合-->
 <% if @datas.present? %>
 
-  <% @datas.each do |data| %>
+  <div class="row d-flex flex-wrap pb-5">
+    <% @datas.each do |data| %>
 
-  <h3><%= data.member.name %>さんの投稿</h3>
+    <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
+      <h4><%= data.member.name %>さんの投稿</h4>
 
-  <h4>タイトル</h4>
-  <!--タイトルをクリック後、悩み事詳細画面へ遷移-->
-  <%= link_to data.title, problem_path(data.id) %>
+      <h4 class="mt-3">タイトル</h4>
+      <!--タイトルをクリック後、悩み事詳細画面へ遷移-->
+      <%= link_to data.title, problem_path(data.id) %>
 
-  <h4>悩み事の内容</h4>
-  <%= data.body %>
+      <h4 class="mt-3">悩み事の内容</h4>
+      <%= data.body %>
 
-  <h4>カテゴリー</h4>
-  <%= data.category.name %>
+      <h4 class="mt-3">カテゴリー</h4>
+      <%= data.category.name %>
+    </div>
 
   <% end %>
+  </div>
 
 <!--検索結果が無い場合-->
 <% else %>
 
-  検索結果はありませんでした
+  <div class="row pl-5">
+    <h4 class="ml-5 pl-5">検索結果はありませんでした。</h4>
+  </div>
 
 <% end %>
+
+</div>
