@@ -1,91 +1,152 @@
-<!--悩み事の詳細画面-->
-<h2><%= @problem.member.name %>さんの投稿</h2>
+<div class="pb-5">
+<div class="container pb-5">
 
-<h4>タイトル</h4>
-<%= @problem.title %>
+  <!--悩み事の詳細画面-->
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded"><%= @problem.member.name %>さんの悩み事詳細</h2>
+    </div>
+  </div>
 
-<h4>悩みの内容</h4>
-<%= @problem.body %>
+  <div class="row pl-5">
+    <h5 class="col-3">タイトル</h5>
+    <p class="col-3"><%= @problem.title %></p>
+  </div>
 
-<h4>カテゴリー</h4>
-<%= @problem.category.name %>
+  <div class="row pl-5">
+    <h5 class="col-3">悩みの内容</h5>
+    <p class="col-3"><%= @problem.body %></p>
+  </div>
 
-<!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
-<% if @problem.member_id == current_member.id %>
-  <%= link_to '削除', problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
-<% end %>
+  <div class="row pl-5">
+    <h5 class="col-3">カテゴリー</h5>
+    <p class="col-3"><%= @problem.category.name %></p>
+  </div>
 
-<!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
-<% if @problem.member_id != current_member.id %>
-  <%= link_to '回答を投稿', new_problem_advice_path(@problem.id) %>
-<% end %>
+  <!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
+  <div class="row ml-2 pl-5">
+    <% if @problem.member_id == current_member.id %>
+      <%= link_to problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+        <i class="fas fa-trash-alt"></i> 悩み事を削除
+      <% end %>
+    <% end %>
+  </div>
 
-<!--回答がある場合-->
-<% if @problem.advices.present? %>
+  <!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
+  <div class="row ml-2 pl-5">
+    <% if @problem.member_id != current_member.id %>
+      <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-2 btn btn-success" do %>
+        <i class="fas fa-plus-circle"></i> 回答を投稿
+      <% end %>
+    <% end %>
+  </div>
 
-  <% @problem.advices.each do |advice| %>
+</div>
 
-  <h2><%= advice.member.name %>さんからの回答</h2>
+<div class="container pl-5 pb-5">
+  <!--回答がある場合-->
+    <% if @problem.advices.present? %>
 
-    <%= advice.body %>
+    <% @problem.advices.each do |advice| %>
+
+    <div class="row pt-3 pl-3 border-top border-secondary">
+      <h4 class="col-4"><i class="far fa-comment-dots"></i> <%= advice.member.name %>さんからの回答</h4>
+    </div>
+
+    <div class="row pl-3">
+      <p class="col-4"><%= advice.body %></p>
+    </div>
 
     <!--回答に付けられた「いいね」に、ログインユーザーが含まれていれば削除-->
-    <% if advice.favorited_by?(current_member) %>
+      <% if advice.favorited_by?(current_member) %>
 
-      <%= link_to problem_advice_favorites_path(@problem, advice_id: advice.id), method: :delete do %>
-        いいねを外す<%= advice.favorites.count %>人からいいね！されています
+      <div class="row pl-3">
+        <%= link_to problem_advice_favorites_path(@problem, advice_id: advice.id), method: :delete, class:"col-4" do %>
+          <span>いいねを外す</span>
+        <% end %>
+      </div>
+      <div class="row pl-3">
+        <p class="col-4"><%= advice.favorites.count %>人からいいねされています</p>
+      </div>
+
+      <!--回答に付けられた「いいね」に、ログインユーザーが含まれていなければ投稿-->
+      <% else %>
+
+      <div class="row pl-3">
+        <%= link_to problem_advice_favorites_path(@problem, advice_id: advice.id), method: :post, class:"col-4" do %>
+          <i class="far fa-thumbs-up"></i> いいね
+        <% end %>
+      </div>
+      <div class="row pl-3">
+        <p class="col-4"><%= advice.favorites.count %>人からいいねされています</p>
+      </div>
+
       <% end %>
 
-    <!--回答に付けられた「いいね」に、ログインユーザーが含まれていなければ投稿-->
-    <% else %>
-
-      <%= link_to problem_advice_favorites_path(@problem, advice_id: advice.id), method: :post do %>
-        いいね！<%= advice.favorites.count %>人からいいね！されています
+      <!--回答の投稿者であれば、回答の削除リンクが表示-->
+      <div class="row pl-5">
+      <% if advice.member_id == current_member.id %>
+        <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+          <i class="fas fa-trash-alt"></i> 回答を削除
+        <% end %>
       <% end %>
+      </div>
 
-    <% end %>
+      <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
+      <div class="row pl-5">
+      <% if @problem.member_id == current_member.id %>
+        <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-2 btn btn-success" do %>
+          <i class="fas fa-plus-circle"></i> 返事を投稿
+        <% end %>
+      <% end %>
+      </div>
 
-    <!--回答の投稿者であれば、回答の削除リンクが表示-->
-    <% if advice.member_id == current_member.id %>
-      <%= link_to '回答の削除', problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
-    <% end %>
+      <!--返事がある場合-->
+      <% if advice.responses.present? %>
 
-    <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
-    <% if @problem.member_id == current_member.id %>
-      <%= link_to '返事を投稿', new_problem_advice_response_path(@problem, advice_id: advice.id) %>
-    <% end %>
+        <% advice.responses.each do |response| %>
 
-    <!--返事がある場合-->
-    <% if advice.responses.present? %>
+          <div class="row pt-3 pl-5">
+            <h4 class="col-4"><i class="fas fa-reply fa-rotate-180"></i> <%= response.member.name %>さんからの返事</h4>
+          </div>
 
-      <% advice.responses.each do |response| %>
+          <div class="row pl-5">
+            <p class="col-4"><%= response.body %></p>
+          </div>
 
-        <h2><%= response.member.name %>さんからの返事</h2>
+          <!--返事の投稿者であれば、返事の削除リンクが表示-->
+          <div class="row pl-5">
+          <% if response.member_id == current_member.id %>
+            <%= link_to problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+              <i class="fas fa-trash-alt"></i> 返事を削除
+            <% end %>
+          <% end %>
+          </div>
 
-        <%= response.body %>
-
-        <!--返事の投稿者であれば、返事の削除リンクが表示-->
-        <% if response.member_id == current_member.id %>
-          <%= link_to '返事の削除', problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
         <% end %>
 
-      <% end %>
+      <!--返事が無い場合-->
+      <% else %>
 
-    <!--返事が無い場合-->
-    <% else %>
+        <!--返事が無く回答がある場合-->
+        <div class="row pt-3 pl-3">
+        <% if @problem.advices.present? %>
+          <h4 class="col-4">返事はまだありません。</h4>
+        <% end %>
+        </div>
 
-    <!--返事が無く回答がある場合-->
-      <% if @problem.advices.present? %>
-        <h2>返事はまだありません。</h2>
       <% end %>
 
     <% end %>
 
-  <% end %>
+    <!--回答が無い場合-->
+    <% else %>
 
-<!--回答が無い場合-->
-<% else %>
+    <div class="row pt-3 pl-3">
+      <h4 class="col-4">回答はまだありません。</h4>
+    </div>
 
-  <h2>回答はまだありません。</h2>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
+</div>
