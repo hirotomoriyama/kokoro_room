@@ -31,3 +31,9 @@ body{
 a:hover{
   text-decoration: none;
 }
+
+#slide{
+  width: 100%;
+  height: 40vw;
+  object-fit: cover;
+}

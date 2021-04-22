@@ -1,5 +1,7 @@
 {
   "name": "kokoro_room",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "scrollreveal": "^4.0.9"
+  }
 }

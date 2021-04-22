@@ -47,18 +47,84 @@
 <div class="container pt-5">
 
   <div class="row">
-    <h2 class="col text-center">利用には会員登録が必要です。</h2>
+    <h1 class="col mark text-center rounded"><i class="far fa-laugh-beam"></i> kokoro roomへようこそ！<i class="fas fa-laugh-beam"></i></h1>
+  </div>
+
+  <div class="row pb-5">
+    <p class="col text-center">
+      kokoro roomは一人では解決することが難しい悩みをお持ちの方や、<br>
+      周囲に悩みを相談することにためらいがある方のためのオンラインお悩み相談所です。<br>
+      完全会員制ですので、安心してご利用いただけます。
+    </p>
+  </div>
+
+  <!--画像スライダーの挿入-->
+  <div id="slide">
+    <div id="theTarget">
+      <%= image_tag 'heart.jpg' %>
+      <%= image_tag 'smile.jpg' %>
+      <%= image_tag 'friendship.jpg' %>
+      <%= image_tag 'gender.jpg' %>
+    </div>
+  </div>
+
+  <div class="row mt-5 py-5">
+    <h2 class="col mark text-center rounded">現代人の悩み事に関するデータ</h2>
   </div>
 
     <div class="row">
       <p class="col text-center">
-        ここは会員制のサイトです。<br>
+        下図は平成22年に厚生労働省が実施した国民生活調査の悩みやストレスに関する内容です。
+      </p>
+    </div>
+
+    <!--グラフの挿入-->
+    <div class="row graph1">
+      <%= image_tag 'graph1.png', class:"col-10 mx-auto pr-5" %>
+    </div>
+    <div class="row graph2">
+      <%= image_tag 'graph2.png', class:"col-10 mx-auto pl-5 py-5" %>
+    </div>
+
+    <div class="row">
+      <p class="col text-center">
+        ご覧の通り、男女年齢問わず悩み事を抱えている方が多いです。<br />
+        内容は仕事や人間関係、プライベートと多岐に渡ります。
+      </p>
+    </div>
+
+    <div class="row mt-5 py-5">
+      <h2 class="col mark text-center rounded">悩み事を解決するために</h2>
+    </div>
+
+    <div class="row">
+      <p class="col text-center">
+        悩み事を周囲に相談出来ない人や抱え込んでしまう人は少なくありません。<br />
+        そこで・・・
+      </p>
+    </div>
+
+    <div class="row scale py-5">
+      <h3 class="col text-center">kokoro roomで悩み事を投稿し、解決しましょう！</h3>
+    </div>
+
+    <div class="row scale pb-5">
+      <p class="col text-center"><i class="far fa-frown-open fa-3x"></i>　<i class="fas fa-long-arrow-alt-right fa-3x"></i>　<i class="far fa-grin-beam fa-3x"></i></p>
+    </div>
+
+  <div class="row pt-5">
+    <h2 class="col text-center">さあ、はじめましょう！</h2>
+  </div>
+
+    <div class="row pb-5">
+      <p class="col text-center pb-5">
         ご利用の方は<%= link_to 'こちら', new_member_registration_path %>から新規登録して下さい。<br>
         登録済みの方は<%= link_to 'こちら', new_member_session_path %>からログインして下さい。
       </p>
     </div>
 
-</div>
+<%= render 'layouts/back' %>
 
+</div>
 
 <% end %>

@@ -15,18 +15,74 @@
 //= require bootstrap-sprockets
 
 //= require jquery
-//= require jquery.turbolinks
+//= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 /*global $ */
+/*global ScrollReveal */
+
+// アイコンをクリックすると、ページ上部へスクロール
 $(function(){
   $('#back a').on('click', function(event){
     $('body, html').animate({
       scrollTop:0
     }, 800);
     event.preventDefault();
+  });
+});
+
+// 画像スライダー
+$(function(){
+  $("#theTarget").skippr({
+    // スライドショーの変化
+    transition:'fade',
+    // 変化にかかる時間
+    speed:2000,
+    // easingの種類
+    easing:'easeOutQuart',
+    // ナビゲーションの形が泡型
+    navType:'bubble',
+    // 子要素の種類
+    childrenElementType:'img',
+    // ナビゲーション矢印を表示
+    arrows:true,
+    // スライドショーの自動再生
+    autoPlay:true,
+    // 自動再生時のスライド切替間隔
+    autoPlayDuration:3000,
+    // 矢印キーによるスライド送りの設定
+    keyboardOnAlways:true,
+    // 一枚目のスライド表示時に戻る矢印を非表示
+    hidePrevious:false
+  });
+});
+
+// グラフのアニメーション
+$(function(){
+  ScrollReveal().reveal('.graph1',{
+  // 表示までの時間
+  duration:3000,
+  // 左から移動しながら表示
+  origin:'left',
+  distance:'200px'
+  });
+});
+
+$(function(){
+  ScrollReveal().reveal('.graph2',{
+  // 表示までの時間
+  duration:3000,
+  // 右から移動しながら表示
+  origin:'right',
+  distance:'200px'
+  });
+});
+
+$(function(){
+  ScrollReveal().reveal('.scale',{
+  // 徐々に拡大しながら表示
+  scale:0.3
   });
 });
