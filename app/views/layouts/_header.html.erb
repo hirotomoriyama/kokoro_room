@@ -2,7 +2,9 @@
 <% if admin_signed_in? %>
 
 <nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
-  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png', class:"logo" %>
+  <% end %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item pl-3">
@@ -33,7 +35,9 @@
 <% elsif member_signed_in? %>
 
 <nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
-  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png', class:"logo" %>
+  <% end %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item pl-3">
@@ -65,7 +69,9 @@
 <% else %>
 
 <nav class="navbar navbar-expand navbar-dark mw-100 sticky-top" style="background-color:#f5b2ac; border-bottom:1px solid #000;">
-  <%= link_to "kokoro room", root_path, class:"nav-link navbar-brand" %>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png', class:"logo" %>
+  <% end %>
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item pl-3">

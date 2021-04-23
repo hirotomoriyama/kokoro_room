@@ -28,6 +28,12 @@ body{
   background-image: image-url("hoge.jpg");
 }
 
+.logo{
+  width: 100px;
+  height: 50px;
+  border-radius: 75%;
+}
+
 a:hover{
   text-decoration: none;
 }
