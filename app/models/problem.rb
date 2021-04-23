@@ -5,4 +5,7 @@ class Problem < ApplicationRecord
 
   has_many :advices, dependent: :destroy
 
+  validates :title, presence: true
+  validates :body, presence: true
+
 end
