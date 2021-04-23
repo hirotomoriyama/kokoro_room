@@ -33,7 +33,7 @@ $(function(){
   });
 });
 
-// 画像スライダー
+// トップページの画像スライダー
 $(function(){
   $("#theTarget").skippr({
     // スライドショーの変化
@@ -59,7 +59,7 @@ $(function(){
   });
 });
 
-// グラフのアニメーション
+// トップページのグラフのアニメーション
 $(function(){
   ScrollReveal().reveal('.graph1',{
   // 表示までの時間
@@ -70,6 +70,7 @@ $(function(){
   });
 });
 
+// トップページのグラフのアニメーション
 $(function(){
   ScrollReveal().reveal('.graph2',{
   // 表示までの時間
@@ -80,9 +81,31 @@ $(function(){
   });
 });
 
+// トップページの文章のアニメーション
 $(function(){
   ScrollReveal().reveal('.scale',{
   // 徐々に拡大しながら表示
   scale:0.3
+  });
+});
+
+// アバウトページの目次をクリックすると、同名の部分に遷移
+$(function(){
+  $('a[href^="#"]').click(function(){
+    let speed = 400;
+    let href = $(this).attr("href");
+    let target = $(href == "#" || href == "" ? 'html' : href);
+    let position = target.offset().top;
+    $('body, html').animate({
+      scrollTop: position
+    }, speed, 'swing');
+    return false;
+  });
+});
+
+// アバウトページのアコーディオンメニュー
+$(function() {
+  $(".acmenu dt").on("click", function(){
+    $(this).next().slideToggle();
   });
 });
