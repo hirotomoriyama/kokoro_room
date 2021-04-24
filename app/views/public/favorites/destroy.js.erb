@@ -1,0 +1,2 @@
+<!--非同期実装のため、パーシャルの切り替えができるようhtmlを置き換え-->
+document.getElementById('advice_<%= @advice.id %>').innerHTML = '<%= j(render 'public/problems/advice', problem: @problem, advice: @advice) %>'

@@ -1,0 +1,27 @@
+<!--回答に付けられた「いいね」に、ログインユーザーが含まれていれば削除-->
+<% if advice.favorited_by?(current_member) %>
+
+  <div class="row pl-3">
+    <%= link_to problem_advice_favorites_path(problem, advice_id: advice.id), method: :delete, remote: true, class:"col-4" do %>
+      <span>いいねを外す</span>
+    <% end %>
+  </div>
+
+  <div class="row pl-3">
+    <p class="col-4"><%= advice.favorites.count %>人からいいねされています</p>
+  </div>
+
+<!--回答に付けられた「いいね」に、ログインユーザーが含まれていなければ投稿-->
+<% else %>
+
+  <div class="row pl-3">
+    <%= link_to problem_advice_favorites_path(problem, advice_id: advice.id), method: :post, remote: true, class:"col-4" do %>
+      <i class="far fa-thumbs-up"></i> いいね
+    <% end %>
+  </div>
+
+  <div class="row pl-3">
+    <p class="col-4"><%= advice.favorites.count %>人からいいねされています</p>
+  </div>
+
+<% end %>
