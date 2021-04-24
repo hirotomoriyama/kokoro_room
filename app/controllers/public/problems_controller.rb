@@ -6,16 +6,21 @@ class Public::ProblemsController < Public::ApplicationController
 
   def new
     @problem = Problem.new
-    @categories = Category.all
   end
 
   def create
     problem = Problem.new(problem_params)
     # ログイン中の会員が投稿
     problem.member_id = current_member.id
-    problem.save
-    # 悩み投稿後、トップページ（マイページ）へ遷移
-    redirect_to root_path
+    if problem.save
+      flash[:notice] = '悩み事を投稿しました'
+      # 悩み事投稿後、トップページ（マイページ）へ遷移
+      redirect_to root_path
+    else
+      flash.now[:alert] = '項目を入力してください'
+      # 悩み事投稿失敗後、悩み事投稿画面へ遷移
+      render :new
+    end
   end
 
   def show
@@ -25,6 +30,7 @@ class Public::ProblemsController < Public::ApplicationController
   def destroy
     @problem = Problem.find(params[:id])
     @problem.destroy
+    flash[:notice] = "悩み事を削除しました"
     # 悩み削除後、トップページ（マイページ）へ遷移
     redirect_to root_path
   end

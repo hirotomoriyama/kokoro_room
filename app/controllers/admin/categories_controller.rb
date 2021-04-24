@@ -7,9 +7,16 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.save
-    # カテゴリー作成後、同じページに遷移
-    redirect_back(fallback_location: root_path)
+    if @category.save
+      flash[:notice] = "カテゴリーを作成しました"
+      # カテゴリー作成後、同じページに遷移
+      redirect_back(fallback_location: root_path)
+    else
+      @categories = Category.all
+      flash.now[:alert] = "カテゴリーを入力してください"
+      # カテゴリー作成失敗後、同じページに遷移
+      render :index
+    end
   end
 
   def edit
@@ -18,9 +25,14 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    @category.update(category_params)
-    # カテゴリー編集後、カテゴリー一覧画面に遷移
-    redirect_to admin_categories_path
+    if @category.update(category_params)
+      flash[:notice] = "カテゴリーを編集しました"
+      # カテゴリー編集後、カテゴリー一覧画面に遷移
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = "カテゴリーを入力してください"
+      render :edit
+    end
   end
 
   private

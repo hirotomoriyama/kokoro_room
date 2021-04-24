@@ -11,6 +11,8 @@ class Public::MembersController < Public::ApplicationController
     # falseが有効状態、trueが退会状態
     @member.update(is_deleted: true)
     reset_session
+    flash[:notice] = '退会が完了しました'
+    # 退会処理後、トップページへ遷移
     redirect_to root_path
   end
 

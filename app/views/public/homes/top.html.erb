@@ -3,6 +3,9 @@
 
 <div class="container">
 
+  <!--サクセスメッセージの表示-->
+  <%= render 'layouts/notice' %>
+
   <div class="row my-5">
     <div class="col-6">
       <h2 class="mark text-center rounded"><%= @member.name %>さんの悩み事履歴一覧</h2>
@@ -46,7 +49,10 @@
 
 <div class="container pt-5">
 
-  <div class="row">
+  <!--サクセスメッセージの表示-->
+  <%= render 'layouts/notice' %>
+
+  <div class="row pt-3">
     <h1 class="col mark text-center rounded"><i class="far fa-laugh-beam"></i> kokoro roomへようこそ！<i class="fas fa-laugh-beam"></i></h1>
   </div>
 
@@ -109,7 +115,7 @@
     </div>
 
     <div class="row scale pb-5">
-      <p class="col text-center"><i class="far fa-frown-open fa-3x"></i>　<i class="fas fa-long-arrow-alt-right fa-3x"></i>　<i class="far fa-grin-beam fa-3x"></i></p>
+      <%= image_tag 'hands.jpg', class:"col-8 mx-auto" %>
     </div>
 
   <div class="row pt-5">
