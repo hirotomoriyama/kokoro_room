@@ -96,6 +96,23 @@
             <p class="col-4"><%= response.body %></p>
           </div>
 
+          <!--5段階評価の星の表示-->
+          <div class="pl-5">
+            回答への評価：<span class="text-danger"><%= response.rate %></span>
+          </div>
+
+          <div id="star-<%= response.id %>" class="pl-5"></div>
+          <script>
+            $('#star-<%= response.id %>').raty({
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              half: true,
+              readOnly: true,
+              score: <%= response.rate %>
+            });
+          </script>
+
           <!--返事の投稿者であれば、返事の削除リンクが表示-->
           <div class="row pl-5">
           <% if response.member_id == current_member.id %>

@@ -34,7 +34,7 @@ class Public::ResponsesController < Public::ApplicationController
 
   # 返事投稿時、返事の内容を投稿するための設定
   def response_params
-    params.require(:response).permit(:body)
+    params.require(:response).permit(:body, :rate)
   end
 
 end

@@ -16,7 +16,22 @@
     <%= f.text_area :body, class:"col-3", placeholder:"返事の内容を入力してください" %>
   </div>
 
-  <div class="row mr-5 pl-5 pb-3">
+  <div class="row pl-5" id="star">
+    <%= f.label :rate, "評価", class:"col-3" %>
+    <%= f.hidden_field :rate, :value => 'score' %>
+  </div>
+
+  <script>
+    $('#star').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'response[rate]',
+      half: true
+    });
+  </script>
+
+  <div class="row mr-5 pl-5 py-3">
     <div class="offset-3 col-2">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
         <i class="fas fa-plus-circle"></i> 投稿
