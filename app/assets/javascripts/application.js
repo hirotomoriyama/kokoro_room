@@ -63,7 +63,7 @@ $(function(){
 $(function(){
   ScrollReveal().reveal('.graph1',{
   // 表示までの時間
-  duration:3000,
+  duration:4000,
   // 左から移動しながら表示
   origin:'left',
   distance:'200px'
@@ -74,7 +74,7 @@ $(function(){
 $(function(){
   ScrollReveal().reveal('.graph2',{
   // 表示までの時間
-  duration:3000,
+  duration:4000,
   // 右から移動しながら表示
   origin:'right',
   distance:'200px'
@@ -84,6 +84,8 @@ $(function(){
 // トップページの文章のアニメーション
 $(function(){
   ScrollReveal().reveal('.scale',{
+    // 表示までの時間
+  duration:4000,
   // 徐々に拡大しながら表示
   scale:0.3
   });
