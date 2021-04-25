@@ -1,5 +1,4 @@
 class Response < ApplicationRecord
-
   belongs_to :member
   belongs_to :advice
 
@@ -11,5 +10,4 @@ class Response < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 0.5,
   }
-
 end

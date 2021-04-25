@@ -1,5 +1,4 @@
 class Advice < ApplicationRecord
-
   belongs_to :member
   belongs_to :problem
 
@@ -12,5 +11,4 @@ class Advice < ApplicationRecord
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?
   end
-
 end

@@ -10,8 +10,9 @@ class Member < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # メールアドレスのバリデーションにメールアドレスの形式ではない場合は除外し、一意性を付与
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX } }
+  validates :email, uniqueness: { case_sensitive: false }
   validates :encrypted_password, presence: true
   validates :name, presence: true
 
@@ -19,5 +20,4 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-
 end

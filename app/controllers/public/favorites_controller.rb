@@ -1,5 +1,4 @@
 class Public::FavoritesController < Public::ApplicationController
-
   def create
     @problem = Problem.find(params[:problem_id])
     @advice = Advice.find(params[:advice_id])
@@ -15,5 +14,4 @@ class Public::FavoritesController < Public::ApplicationController
     favorite = current_member.favorites.find_by(advice_id: @advice.id)
     favorite.destroy
   end
-
 end

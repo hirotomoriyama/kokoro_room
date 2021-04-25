@@ -1,5 +1,4 @@
 class Public::SearchesController < Public::ApplicationController
-
   def search
     # 検索対象のモデルを格納
     @model = params['search']['model']
@@ -33,5 +32,4 @@ class Public::SearchesController < Public::ApplicationController
       partical(model, content)
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Public::AdvicesController < Public::ApplicationController
-
   def new
     @advice = Advice.new
     @problem = Problem.find(params[:problem_id])
@@ -38,5 +37,4 @@ class Public::AdvicesController < Public::ApplicationController
   def advice_params
     params.require(:advice).permit(:body)
   end
-
 end

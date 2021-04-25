@@ -1,5 +1,4 @@
 class Problem < ApplicationRecord
-
   belongs_to :member
   belongs_to :category
 
@@ -8,5 +7,4 @@ class Problem < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :category_id, presence: true
-
 end

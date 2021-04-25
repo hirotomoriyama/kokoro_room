@@ -1,5 +1,4 @@
 class Public::ResponsesController < Public::ApplicationController
-
   def new
     @response = Response.new
     @advice = Advice.find(params[:advice_id])
@@ -38,5 +37,4 @@ class Public::ResponsesController < Public::ApplicationController
   def response_params
     params.require(:response).permit(:body, :rate)
   end
-
 end

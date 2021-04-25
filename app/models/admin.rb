@@ -5,6 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, presence: true
-  validates :encrypted_password, presence:true
-
+  validates :encrypted_password, presence: true
 end

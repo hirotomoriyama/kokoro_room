@@ -2,28 +2,25 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: {
     registrations: 'admin/registrations',
     sessions: 'admin/sessions',
-    passwords: 'admin/passwords'
+    passwords: 'admin/passwords',
   }
 
   devise_for :members, controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions',
-    passwords: 'public/passwords'
+    passwords: 'public/passwords',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-
     get "/" => "homes#top"
 
     resources :categories, only: [:index, :create, :edit, :update]
 
     resources :members, only: [:index, :show, :edit, :update]
-
   end
 
   scope module: 'public' do
-
     root to: "homes#top"
 
     get "/about" => "homes#about"
@@ -40,7 +37,5 @@ Rails.application.routes.draw do
     end
 
     get '/searches' => "searches#search"
-
   end
-
 end

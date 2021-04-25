@@ -1,5 +1,4 @@
 class Public::ProblemsController < Public::ApplicationController
-
   def index
     @problems = Problem.all
   end
@@ -41,5 +40,4 @@ class Public::ProblemsController < Public::ApplicationController
   def problem_params
     params.require(:problem).permit(:title, :body, :category_id)
   end
-
 end

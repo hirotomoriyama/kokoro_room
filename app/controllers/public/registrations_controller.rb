@@ -1,5 +1,4 @@
 class Public::RegistrationsController < Devise::RegistrationsController
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # 会員新規登録後の遷移先
@@ -13,5 +12,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
-
 end

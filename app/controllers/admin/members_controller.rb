@@ -1,5 +1,4 @@
 class Admin::MembersController < Admin::ApplicationController
-
   def index
     @members = Member.all
   end
@@ -22,9 +21,8 @@ class Admin::MembersController < Admin::ApplicationController
 
   private
 
-  #会員ステータス編集時、選択するための設定
+  # 会員ステータス編集時、選択するための設定
   def member_params
     params.require(:member).permit(:is_deleted)
   end
-
 end

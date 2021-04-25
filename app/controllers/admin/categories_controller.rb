@@ -1,5 +1,4 @@
 class Admin::CategoriesController < Admin::ApplicationController
-
   def index
     @category = Category.new
     @categories = Category.all
@@ -41,5 +40,4 @@ class Admin::CategoriesController < Admin::ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
 end

@@ -1,5 +1,4 @@
 class Public::MembersController < Public::ApplicationController
-
   def unsubscribe
     # 退会確認画面を開くのはログインユーザーのみ
     @member = current_member
@@ -15,5 +14,4 @@ class Public::MembersController < Public::ApplicationController
     # 退会処理後、トップページへ遷移
     redirect_to root_path
   end
-
 end
