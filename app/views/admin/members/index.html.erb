@@ -20,7 +20,7 @@
       <tr>
         <td><%= member.id %></td>
         <!--会員名をクリックすると会員詳細画面へ遷移-->
-        <td><%= link_to member.name, admin_member_path(member) %></td>
+        <td><%= link_to member.name, admin_member_path(member) %>さん</td>
         <td><%= member.email %></td>
         <!--会員ステータスを文字列化-->
         <td>
