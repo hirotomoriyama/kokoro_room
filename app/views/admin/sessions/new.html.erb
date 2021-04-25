@@ -1,4 +1,20 @@
-<div class="container">
+<div class="container pt-5">
+
+  <!--サクセスメッセージの表示-->
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <% end %>
+
+  <!--エラーメッセージの表示-->
+  <% if @admin.errors.any? %>
+    <div id="error_explanation">
+    <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
 
   <div class="row my-5">
     <div class="col-6">

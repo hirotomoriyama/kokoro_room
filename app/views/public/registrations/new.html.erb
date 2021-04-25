@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container pt-5">
+
+  <!--エラーメッセージの表示-->
+  <%= render "devises/shared/error_messages", resource: resource %>
 
   <div class="row my-5">
     <div class="col-6">
@@ -6,16 +9,15 @@
     </div>
   </div>
 
-<%= form_with model: @member, url: member_registration_path, local: true do |f| %>
-  <%= render "devises/shared/error_messages", resource: resource %>
+  <%= form_with model: @member, url: member_registration_path, class:"form", local: true do |f| %>
 
-  <div class="field row pl-5 pb-3">
-    <%= f.label :name, "ニックネーム", class:"col-3" %><br />
+  <div class="row pl-5 pb-3">
+    <%= f.label :name, "ニックネーム", class:"col-3" %>
     <%= f.text_field :name, autofocus: true, class:"col-3", placeholder:"ココロ タロウ" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :email, "メールアドレス", class:"col-3" %><br />
+    <%= f.label :email, "メールアドレス", class:"col-3" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
   </div>
 
@@ -23,12 +25,12 @@
     <%= f.label :password, "パスワード（６文字以上）", class:"col-3" %>
     <% if @minimum_password_length %>
     <em><% @minimum_password_length %></em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password", class:"col-3" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :password_confirmation, "パスワード（確認用）", class:"col-3" %><br />
+    <%= f.label :password_confirmation, "パスワード（確認用）", class:"col-3" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-3" %>
   </div>
 
@@ -40,9 +42,9 @@
     </div>
   </div>
 
-<% end %>
+  <% end %>
 
-  <div class="row pl-5">
+  <div class="row pl-5 pb-5">
     登録済みの方は<%= link_to 'こちら', new_member_session_path %>からログインして下さい。
   </div>
 

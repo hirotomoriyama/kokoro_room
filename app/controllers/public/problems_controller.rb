@@ -9,10 +9,10 @@ class Public::ProblemsController < Public::ApplicationController
   end
 
   def create
-    problem = Problem.new(problem_params)
+    @problem = Problem.new(problem_params)
     # ログイン中の会員が投稿
-    problem.member_id = current_member.id
-    if problem.save
+    @problem.member_id = current_member.id
+    if @problem.save
       flash[:notice] = '悩み事を投稿しました'
       # 悩み事投稿後、トップページ（マイページ）へ遷移
       redirect_to root_path

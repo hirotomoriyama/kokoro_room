@@ -6,16 +6,18 @@ class Public::ResponsesController < Public::ApplicationController
   end
 
   def create
-    response = Response.new(response_params)
+    @response = Response.new(response_params)
     # ログイン中の会員が返事を投稿
-    response.member_id = current_member.id
+    @response.member_id = current_member.id
     # 返事に対する回答の指定
-    response.advice_id = params[:advice_id]
-    if response.save
+    @response.advice_id = params[:advice_id]
+    if @response.save
       flash[:notice] = '返事を投稿しました'
       # 返事投稿後、悩み事詳細画面に遷移
-      redirect_to problem_path(response.advice.problem_id)
+      redirect_to problem_path(@response.advice.problem_id)
     else
+      @response = Response.new(response_params)
+      @advice = Advice.find(params[:advice_id])
       flash.now[:alert] = "項目を入力してください"
       # 返事投稿失敗後、返事投稿画面へ遷移
       render :new

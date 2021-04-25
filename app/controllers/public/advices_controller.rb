@@ -16,6 +16,8 @@ class Public::AdvicesController < Public::ApplicationController
       # 回答投稿後、悩み事詳細画面に遷移
       redirect_to problem_path(@advice.problem_id)
     else
+      @advice = Advice.new(advice_params)
+      @problem = Problem.find(params[:problem_id])
       flash.now[:alert] = '項目を入力してください'
       # 回答投稿失敗後、回答投稿画面へ遷移
       render :new

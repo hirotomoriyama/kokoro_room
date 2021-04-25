@@ -1,4 +1,20 @@
-<div class="container">
+<div class="container pt-5">
+
+  <!--サクセスメッセージの表示-->
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <% end %>
+
+  <!--エラーメッセージの表示-->
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+    <ul>
+      <% @member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
 
   <div class="row my-5">
     <div class="col-6">
@@ -9,12 +25,12 @@
   <%= form_with model: @member, url: member_session_path, local:true do |f| %>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :email, "メールアドレス", class:"col-3" %><br />
+    <%= f.label :email, "メールアドレス", class:"col-3" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :password, "パスワード", class:"col-3" %><br />
+    <%= f.label :password, "パスワード", class:"col-3" %>
     <%= f.password_field :password, autocomplete: "current-password", class:"col-3" %>
   </div>
 
@@ -28,7 +44,7 @@
 
   <% end %>
 
-  <div class="row pl-5">
+  <div class="row pl-5 pb-5">
     登録がまだの方は<%= link_to 'こちら', new_member_registration_path %>から新規登録して下さい。
   </div>
 
