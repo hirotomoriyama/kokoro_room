@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>kokoro room</title>
+    <title><%= content_for?(:title) ? yield(:title) : "kokoro room" %></title>
     <!--ファビコンの設定-->
     <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
