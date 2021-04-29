@@ -1,4 +1,30 @@
-<h2>カテゴリー一覧</h2>
-  <% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category) %>
-  <% end %>
+<div class="container">
+
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">カテゴリー一覧</h2>
+    </div>
+  </div>
+
+  <table class="table table-hover w-50 pb-5">
+    <thead>
+      <tr>
+        <th>カテゴリー名</th>
+        <th>投稿された悩み事の数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td>
+            <%= link_to category.name, category_path(category) %>
+          </td>
+          <td>
+            <%= category.problems.count %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
