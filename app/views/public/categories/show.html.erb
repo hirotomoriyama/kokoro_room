@@ -11,6 +11,7 @@
     </div>
   </div>
 
+  <% if @category.problems.present? %>
   <div class="row d-flex flex-wrap pb-5">
     <% @category.problems.each do |problem| %>
 
@@ -33,5 +34,10 @@
 
     <% end %>
   </div>
+  <% else %>
+    <div class="row pt-3 pl-5">
+      <h4 class="col pl-5"><%= @category.name %>に関する悩み事はまだありません。</h4>
+    </div>
+  <% end %>
 
 </div>
