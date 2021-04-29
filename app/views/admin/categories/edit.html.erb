@@ -19,7 +19,7 @@
   <%= form_with model: @category, url: admin_category_path(@category.id), local:true do |f| %>
     <%= f.label :name, "カテゴリー名", class:"col-3" %>
     <%= f.text_field :name, class:"col-4", placeholder:"ここに入力" %>
-    <%= button_tag :type => "submit", :class => "offset-3 col-2 form-control form-control-sm btn btn-success" do %>
+    <%= button_tag :type => "submit", :class => "offset-3 col-3 form-control form-control-sm btn btn-success" do %>
       <i class="fas fa-save"></i> 変更を保存
     <% end %>
   <% end %>

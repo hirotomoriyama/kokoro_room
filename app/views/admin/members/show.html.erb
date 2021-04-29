@@ -15,17 +15,17 @@
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">会員ID</h5>
+    <h5 class="col-4">会員ID</h5>
     <p class="col-3"><%= @member.id %></p>
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">メールアドレス</h5>
+    <h5 class="col-4">メールアドレス</h5>
     <p class="col-3"><%= @member.email %></p>
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">会員ステータス</h5>
+    <h5 class="col-4">会員ステータス</h5>
     <!--会員ステータスを文字列化-->
     <p class="col-3">
       <% if @member.is_deleted == false %>
@@ -37,7 +37,7 @@
   </div>
 
   <div class="row pl-5">
-    <%= link_to edit_admin_member_path, class:"offset-3 col-1 btn btn-success" do %>
+    <%= link_to edit_admin_member_path, class:"offset-4 col-2 btn btn-success" do %>
       <i class="fas fa-edit"></i> 編集
     <% end %>
   </div>

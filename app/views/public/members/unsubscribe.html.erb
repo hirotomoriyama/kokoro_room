@@ -19,13 +19,13 @@
   </div>
 
   <div class="row pl-5">
-    <div class="col-2 ml-5">
+    <div class="col-3 ml-5">
       <%= link_to root_path, class:"btn btn-primary" do %>
         <i class="fas fa-door-closed"></i> 退会しない
       <% end %>
     </div>
 
-    <div class="col-2 ml-3">
+    <div class="col-3">
       <%= link_to members_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class:"btn btn-danger" do %>
         <i class="fas fa-door-open"></i> 退会する
       <% end %>

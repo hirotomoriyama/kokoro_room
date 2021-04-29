@@ -39,7 +39,7 @@
   <!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
   <div class="row ml-2 pl-5">
     <% if @problem.member_id == current_member.id %>
-      <%= link_to problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+      <%= link_to problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
         <i class="fas fa-trash-alt"></i> 悩み事を削除
       <% end %>
     <% end %>
@@ -48,7 +48,7 @@
   <!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
   <div class="row ml-2 pl-5">
     <% if @problem.member_id != current_member.id %>
-      <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-2 btn btn-success" do %>
+      <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-3 btn btn-success" do %>
         <i class="fas fa-plus-circle"></i> 回答を投稿
       <% end %>
     <% end %>
@@ -82,7 +82,7 @@
       <!--回答の投稿者であれば、回答の削除リンクが表示-->
       <div class="row pl-5">
       <% if advice.member_id == current_member.id %>
-        <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+        <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
           <i class="fas fa-trash-alt"></i> 回答を削除
         <% end %>
       <% end %>
@@ -91,7 +91,7 @@
       <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
       <div class="row pl-5">
       <% if @problem.member_id == current_member.id %>
-        <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-2 btn btn-success" do %>
+        <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-3 btn btn-success" do %>
           <i class="fas fa-plus-circle"></i> 返事を投稿
         <% end %>
       <% end %>
@@ -134,7 +134,7 @@
           <!--返事の投稿者であれば、返事の削除リンクが表示-->
           <div class="row pl-5">
           <% if response.member_id == current_member.id %>
-            <%= link_to problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-2 btn btn-danger" do %>
+            <%= link_to problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
               <i class="fas fa-trash-alt"></i> 返事を削除
             <% end %>
           <% end %>

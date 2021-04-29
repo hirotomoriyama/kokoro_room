@@ -12,19 +12,19 @@
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">会員ID</h5>
+    <h5 class="col-4">会員ID</h5>
     <p class="col-3"><%= @member.id %></p>
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">メールアドレス</h4>
+    <h5 class="col-4">メールアドレス</h4>
     <p class="col-3"><%= @member.email %></p>
   </div>
 
   <div class="row pl-5">
-    <h5 class="col-3">会員ステータス</h5>
+    <h5 class="col-4">会員ステータス</h5>
     <!--ラジオボタンで有効か退会か選択-->
-    <%= form_with model: @member, url: admin_member_path(@member.id), class:"col-3", method: :patch, local:true do |f| %>
+    <%= form_with model: @member, url: admin_member_path(@member.id), class:"col-4", method: :patch, local:true do |f| %>
       <%= f.radio_button :is_deleted, :false %>有効
       <%= f.radio_button :is_deleted, :true %>退会
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success w-75 mt-2" do %>
