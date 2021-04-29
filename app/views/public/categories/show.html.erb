@@ -1,2 +1,17 @@
-<h1>Public::Categories#show</h1>
-<p>Find me in app/views/public/categories/show.html.erb</p>
+<h2><%= @category.name %>に関する悩み事一覧</h2>
+  <% @category.problems.each do |problem| %>
+    <h4><%= problem.member.name %>さんの投稿</h4>
+
+    <h5>投稿日時</h5>
+    <%= problem.created_at.to_s(:datetime_jp) %>
+
+    <h4>タイトル</h4>
+    <!--タイトルをクリック時、悩み事の詳細画面へ遷移-->
+    <%= link_to problem.title, problem_path(problem) %>
+
+    <h4>悩み事の内容</h4>
+    <%= problem.body %>
+
+    <h4>カテゴリー</h4>
+    <%= @category.name %>
+  <% end %>
