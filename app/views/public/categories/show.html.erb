@@ -13,7 +13,7 @@
 
   <% if @category.problems.present? %>
   <div class="row d-flex flex-wrap pb-5">
-    <% @category.problems.each do |problem| %>
+    <% @category.problems.reverse_each do |problem| %>
 
     <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
       <h4><%= problem.member.name %>さんの投稿</h4>

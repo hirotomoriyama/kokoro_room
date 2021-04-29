@@ -16,7 +16,7 @@
 
   <div class="row d-flex flex-wrap pb-5">
 
-    <% @datas.each do |data| %>
+    <% @datas.reverse_each do |data| %>
 
     <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
       <h4><%= data.member.name %>さんの投稿</h4>
