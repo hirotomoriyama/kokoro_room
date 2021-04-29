@@ -1,2 +1,4 @@
-<h1>Public::Categories#index</h1>
-<p>Find me in app/views/public/categories/index.html.erb</p>
+<h2>カテゴリー一覧</h2>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category_path(category) %>
+  <% end %>
