@@ -17,6 +17,7 @@
       <% @categories.each do |category| %>
         <tr>
           <td>
+            <!--クリックしたカテゴリーに関する悩み事一覧画面へ遷移-->
             <%= link_to category.name, category_path(category) %>
           </td>
           <td>
