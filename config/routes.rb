@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin, controllers: {
     registrations: 'admin/registrations',
     sessions: 'admin/sessions',
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
         resource :favorites, only: [:create, :destroy]
       end
     end
+
+    resources :categories, only: [:index, :show]
 
     get '/searches' => "searches#search"
   end
