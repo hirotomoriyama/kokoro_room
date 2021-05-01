@@ -14,4 +14,14 @@ class Public::MembersController < Public::ApplicationController
     # 退会処理後、トップページへ遷移
     redirect_to root_path
   end
+
+  # ゲストログインの設定
+  def guest_sign_in
+    member = Member.find_or_create_by!(name: 'ゲスト', email: ENV['GUEST_EMAIL']) do |member|
+      member.password = SecureRandom.urlsafe_base64
+    end
+    sign_in member
+      flash[:notice] = 'ゲストユーザーとしてログインしました'
+      redirect_to root_path
+  end
 end

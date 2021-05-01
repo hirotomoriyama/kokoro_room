@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     passwords: 'public/passwords',
   }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root to: "homes#top"
 
-    post "/homes/guest_sign_in", to: "homes#new_guest"
+    post "members/guest_sign_in" => "members#guest_sign_in"
 
     get "/about" => "homes#about"
 
