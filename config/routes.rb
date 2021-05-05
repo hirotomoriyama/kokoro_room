@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :show]
 
+    resource :contacts, only: [:new, :create]
+
     get '/searches' => "searches#search"
   end
 end
