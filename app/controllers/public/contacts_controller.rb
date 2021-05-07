@@ -8,6 +8,7 @@ class Public::ContactsController < Public::ApplicationController
     # ログイン中の会員が投稿
     @contact.member_id = current_member.id
     if @contact.save
+      # メール送信の実行
       ContactMailer.contact_mail(@contact).deliver
       flash[:notice] = '問い合わせ内容を送信しました'
       # 問い合わせ内容投稿後、トップページ（マイページ）へ遷移
