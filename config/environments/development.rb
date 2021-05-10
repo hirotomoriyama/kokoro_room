@@ -42,6 +42,7 @@ Rails.application.configure do
       address: 'smtp.gmail.com',
       user_name: ENV['SMTP_USERNAME'],
       password: ENV['SMTP_PASSWORD'],
+      # メール送信時、TLS認証を用いる設定
       enable_starttls_auto: true
     }
 

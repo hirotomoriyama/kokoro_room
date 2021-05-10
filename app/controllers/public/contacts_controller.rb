@@ -10,7 +10,7 @@ class Public::ContactsController < Public::ApplicationController
     if @contact.save
       # メール送信の実行
       ContactMailer.contact_mail(@contact).deliver
-      flash[:notice] = '問い合わせ内容を送信しました'
+      flash[:notice] = 'お問い合わせ内容を送信しました'
       # 問い合わせ内容投稿後、トップページ（マイページ）へ遷移
       redirect_to root_path
     else
