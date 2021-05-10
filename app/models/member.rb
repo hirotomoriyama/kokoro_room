@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   has_many :advices, dependent: :destroy
   has_many :responses, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   # メールアドレスのバリデーションにメールアドレスの形式ではない場合は除外し、一意性を付与
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
