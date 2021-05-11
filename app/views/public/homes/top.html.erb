@@ -6,6 +6,12 @@
   <!--サクセスメッセージの表示-->
   <%= render 'layouts/notice' %>
 
+  <span style="position:fixed; right:20px;">
+    <%= link_to new_contacts_path, class:"btn btn-info" do %>
+      <h6 class="mt-2"><i class="far fa-envelope"></i>お問い合わせ</h6>
+    <% end %>
+  </span>
+
   <div class="row my-5">
     <div class="col-6">
       <h2 class="mark text-center rounded"><%= @member.name %>さんの悩み事履歴一覧</h2>
