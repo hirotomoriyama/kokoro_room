@@ -24,6 +24,7 @@
     </div>
   </div>
 
+  <% if @problems.present? %>
   <div class="row d-flex flex-wrap">
     <% @problems.reverse_each do |problem| %>
 
@@ -44,6 +45,11 @@
 
     <% end %>
   </div>
+  <% else %>
+    <div class="row pt-3 pl-5">
+      <h4 class="col pl-5">悩み事はまだありません。</h4>
+    </div>
+  <% end %>
 
   <div class="row mt-5 pb-5">
     <p class="col-12 text-center pb-5">退会手続きは<%= link_to 'こちら', members_unsubscribe_path %>から出来ます。</p>
