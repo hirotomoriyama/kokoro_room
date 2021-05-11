@@ -24,13 +24,13 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root to: "homes#top"
 
-    post "members/guest_sign_in" => "members#guest_sign_in"
-
     get "/about" => "homes#about"
 
     get "members/unsubscribe" => "members#unsubscribe"
 
     patch "members/withdraw" => "members#withdraw"
+
+    post "members/guest_sign_in" => "members#guest_sign_in"
 
     resources :problems, except: [:edit, :update] do
       resources :advices, only: [:new, :create, :destroy] do
