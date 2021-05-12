@@ -46,6 +46,24 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
+  # メール送信を有効にする設定
+  config.action_mailer.perform_deliveries = true
+  # メール送信失敗時、エラーを発生させるための設定
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # メール送信時、SMTP通信を利用するための設定
+  config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      port: 587,
+      domain: 'smtp.gmail.com',
+      address: 'smtp.gmail.com',
+      user_name: ENV['SMTP_USERNAME'],
+      password: ENV['SMTP_PASSWORD'],
+      authentication: 'plain',
+      # メール送信時、TLS認証を用いる設定
+      enable_starttls_auto: true
+    }
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
