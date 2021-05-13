@@ -1,4 +1,14 @@
 class Public::MembersController < Public::ApplicationController
+  def show
+    @member = Member.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
   def unsubscribe
     # 退会確認画面を開くのはログインユーザーのみ
     @member = current_member

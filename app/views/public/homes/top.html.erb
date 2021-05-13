@@ -7,6 +7,10 @@
   <%= render 'layouts/notice' %>
 
   <span style="position:fixed; right:20px;">
+    <%= link_to member_path(@member.id), class:"btn btn-success" do %>
+      <h6 class="mt-2"><i class="fas fa-user"></i> マイページ</h6>
+    <% end %>
+
     <%= link_to new_contacts_path, class:"btn btn-info" do %>
       <h6 class="mt-2"><i class="far fa-envelope"></i> お問い合わせ</h6>
     <% end %>
