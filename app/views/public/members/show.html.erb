@@ -5,7 +5,7 @@
 
 <h2><%= @member.name %>さんのマイページ</h2>
 <h5>プロフィール画像</h5>
-<p><%= attachment_image_tag@member, :image, size:"100x100", format:'jpeg', fallback:"no_image.jpg" %></p>
+<p><%= attachment_image_tag @member, :image, size:"100x100", format:'jpeg', fallback:"no_image.jpg" %></p>
 
 <h5>プロフィール文</h5>
 <% if @member.body.present? %>

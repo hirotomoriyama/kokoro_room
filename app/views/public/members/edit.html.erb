@@ -1,0 +1,23 @@
+<!--ページタイトルの指定-->
+<% content_for :title do %>
+  <%= @member.name %>さんのマイページ編集 | kokoro room
+<% end %>
+
+<h2><%= @member.name %>さんのマイページ編集</h2>
+
+<%= form_with model: @member, url: edit_member_path(@member.id), local:true do |f| %>
+  <%= f.label :image, "プロフィール画像", class:"h5" %>
+  <%= attachment_image_tag @member, :image, size:"100x100", format:'jpeg', fallback:"no_image.jpg" %>
+  <%= f.attachment_field :image %>
+
+  <%= f.label :body, "プロフィール文", class:"h5" %>
+  <%= f.text_area :body, rows:"10", placeholder:"よろしくお願いします。" %>
+
+  <h5>悩み事の投稿総数</h5>
+  <p><%= @member.problems.count %>件</p>
+
+  <h5>回答の投稿総数</h5>
+  <p><%= @member.advices.count %>件</p>
+
+  <%= f.submit '保存' %>
+<% end %>
