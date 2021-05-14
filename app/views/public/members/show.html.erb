@@ -1,0 +1,25 @@
+<!--ページタイトルの指定-->
+<% content_for :title do %>
+  <%= @member.name %>さんのマイページ | kokoro room
+<% end %>
+
+<h2><%= @member.name %>さんのマイページ</h2>
+<h5>プロフィール画像</h5>
+<p><%= attachment_image_tag@member, :image, size:"100x100", format:'jpeg', fallback:"no_image.jpg" %></p>
+
+<h5>プロフィール文</h5>
+<% if @member.body.present? %>
+  <p><%= @member.body %></p>
+<% else %>
+  <p>まだ作成されていません。</p>
+<% end %>
+
+<h5>悩み事の投稿総数</h5>
+<p><%= @member.problems.count %>件</p>
+
+<h5>回答の投稿総数</h5>
+<p><%= @member.advices.count %>件</p>
+
+<% if @member.id == current_member.id %>
+  <%= link_to "プロフィール編集", edit_member_path(@member) %>
+<% end %>
