@@ -26,7 +26,11 @@ Rails.application.routes.draw do
 
     get "/about" => "homes#about"
 
-    resources :members, only: [:show, :edit, :update]
+    get "members/my_page" => "members#show"
+
+    get "members/my_page/edit" => "members#edit"
+
+    patch "members/my_page" => "members#update"
 
     get "members/unsubscribe" => "members#unsubscribe"
 

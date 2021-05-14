@@ -1,20 +1,18 @@
 class Public::MembersController < Public::ApplicationController
   def show
-    @member = Member.find(params[:id])
+    @member = current_member
   end
 
   def edit
-    @member = Member.find(params[:id])
+    @member = current_member
   end
 
   def update
-    @member = Member.find(params[:id])
-    # ログイン中の会員が変更
-    @member.id = current_member.id
+    @member = current_member
     @member.update(member_params)
     flash[:notice] = "マイページを編集しました"
     # マイページ編集後、マイページへ遷移
-    redirect_to member_path(@member.id)
+    redirect_to members_my_page_path
   end
 
   def unsubscribe

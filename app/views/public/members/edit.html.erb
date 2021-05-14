@@ -5,7 +5,7 @@
 
 <h2><%= @member.name %>さんのマイページ編集</h2>
 
-<%= form_with model: @member, url: member_path(@member.id), local:true do |f| %>
+<%= form_with model: @member, url: members_my_page_path, local:true do |f| %>
   <%= f.label :image, "プロフィール画像", class:"h5" %>
   <%= attachment_image_tag @member, :image, size:"100x100", format:'jpeg', fallback:"no_image.jpg" %>
   <%= f.attachment_field :image %>

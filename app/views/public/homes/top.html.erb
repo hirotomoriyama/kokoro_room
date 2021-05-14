@@ -1,13 +1,13 @@
 <!--会員ログイン時はログインユーザーの悩み履歴一覧を表示-->
 <% if member_signed_in? %>
 
-<div class="container">
+<div class="container pb-5">
 
   <!--サクセスメッセージの表示-->
   <%= render 'layouts/notice' %>
 
   <span style="position:fixed; right:20px;">
-    <%= link_to member_path(@member.id), class:"btn btn-success" do %>
+    <%= link_to members_my_page_path, class:"btn btn-success" do %>
       <h6 class="mt-2"><i class="fas fa-user"></i> マイページ</h6>
     <% end %>
 
@@ -54,10 +54,6 @@
       <h4 class="col pl-5">悩み事はまだありません。</h4>
     </div>
   <% end %>
-
-  <div class="row mt-5 pb-5">
-    <p class="col-12 text-center pb-5">退会手続きは<%= link_to 'こちら', members_unsubscribe_path %>から出来ます。</p>
-  </div>
 
 <%= render 'layouts/back' %>
 
