@@ -8,6 +8,13 @@ class Public::MembersController < Public::ApplicationController
   end
 
   def update
+    @member = Member.find(params[:id])
+    # ログイン中の会員が変更
+    @member.id = current_member.id
+    @member.update(member_params)
+    flash[:notice] = "マイページを編集しました"
+    # マイページ編集後、マイページへ遷移
+    redirect_to member_path(@member.id)
   end
 
   def unsubscribe
@@ -34,5 +41,12 @@ class Public::MembersController < Public::ApplicationController
     sign_in @member
     flash[:notice] = 'ゲストユーザーとしてログインしました'
     redirect_to root_path
+  end
+
+  private
+
+  # マイページ編集時、画像と文章を作成するための設定
+  def member_params
+    params.require(:member).permit(:image, :body)
   end
 end
