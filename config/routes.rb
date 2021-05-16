@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
     get "/about" => "homes#about"
 
+    get "/map" => "homes#map"
+
     get "members/my_page" => "members#show"
 
     get "members/my_page/edit" => "members#edit"

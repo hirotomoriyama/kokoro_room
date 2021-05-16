@@ -1,0 +1,15 @@
+<div id="map"></div>
+
+<script>
+  // マップのデフォルト表示
+  var MyLatLng = new google.maps.LatLng(34.687333, 135.525956);
+  var Options = {
+    // マップの縮尺値
+    zoom: 7,
+    // マップの中心座標
+    center: MyLatLng,
+    // マップの種類
+    mapTypeId: 'roadmap'
+  };
+  var map = new google.maps.Map(document.getElementById('map'), Options);
+</script>
