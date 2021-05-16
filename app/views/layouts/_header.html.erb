@@ -41,11 +41,6 @@
 <div class="collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item pl-3">
-      <%= link_to new_problem_path, class:"nav-link" do %>
-        <i class="fas fa-comment-medical"></i> 悩み事の投稿
-      <% end %>
-    </li>
-    <li class="nav-item pl-3">
       <%= link_to problems_path, class:"nav-link" do %>
         <i class="far fa-frown"></i> 悩み事一覧
       <% end %>
@@ -53,6 +48,11 @@
     <li class="nav-item pl-3">
       <%= link_to categories_path, class:"nav-link" do %>
         <i class="fas fa-angle-double-down"></i> カテゴリー一覧
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
+      <%= link_to map_path, class:"nav-link" do %>
+        <i class="fas fa-map-marked-alt"></i> 癒しスポット一覧
       <% end %>
     </li>
     <li class="nav-item pl-3">

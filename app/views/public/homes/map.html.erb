@@ -1,80 +1,108 @@
-<div id="map"></div>
+<!--ページタイトルの指定-->
+<% content_for :title do %>
+  癒しスポット一覧 | kokoro room
+<% end %>
 
-<script>
-  // マップのデフォルト表示
-  var MyLatLng = new google.maps.LatLng(34.687333, 135.525956);
-  var Options = {
-    // マップの縮尺値
-    zoom: 7,
-    // マップの中心座標
-    center: MyLatLng,
-    // マップの種類
-    mapTypeId: 'roadmap'
-  };
-  var map = new google.maps.Map(document.getElementById('map'), Options);
+<div class="container pb-5">
 
-  // マップ上のマーカー表示
-  var marker1 = new google.maps.Marker({
-    position: {lat: 35.360626, lng: 138.727363},
-    map: map
-  });
-  // マーカーの詳細をクリックで開閉
-  var myinfoWindow1 = new google.maps.InfoWindow({
-    content: '富士山 <%= link_to '詳細を見る', 'http://www.fujisan-climb.jp/', target: :_blank %>'
-  });
-    google.maps.event.addListener(marker1, "click", function(event){
-      myinfoWindow1.open(map, marker1);
+  <div class="row my-5">
+    <div class="col-6">
+      <h2 class="mark text-center rounded">癒しスポット一覧</h2>
+    </div>
+  </div>
+
+  <div class="row pl-4">
+    <div class="col">
+      <p>
+        日本国内には心休まるスポットが多数存在します。<br />
+        ここでは癒しスポットとして５つご紹介いたします。<br />
+        日常から離れて旅行することは大変リフレッシュになりますので、ぜひお役立てください。<br />
+        （地図上の赤いマーカーをクリックして、詳細をご覧ください。）
+      </p>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div id="map"></div>
+  </div>
+
+  <script>
+    // マップのデフォルト表示
+    var MyLatLng = new google.maps.LatLng(34.687333, 135.525956);
+    var Options = {
+      // マップの縮尺値
+      zoom: 7,
+      // マップの中心座標
+      center: MyLatLng,
+      // マップの種類
+      mapTypeId: 'roadmap'
+    };
+    var map = new google.maps.Map(document.getElementById('map'), Options);
+
+    // マップ上のマーカー表示
+    var marker1 = new google.maps.Marker({
+      position: {lat: 35.360626, lng: 138.727363},
+      map: map
     });
-
-  // マップ上のマーカー表示
-  var marker2 = new google.maps.Marker({
-    position: {lat: 32.701497, lng: 131.301031},
-    map: map
-  });
-  // マーカーの詳細をクリックで開閉
-  var myinfoWindow2 = new google.maps.InfoWindow({
-    content: '高千穂峡 <%= link_to '詳細を見る', 'https://www.miyazaki-city.tourism.or.jp/spot/10062', target: :_blank %>'
-  });
-    google.maps.event.addListener(marker2, "click", function(event){
-      myinfoWindow2.open(map, marker2);
+    // マーカーの詳細をクリックで開閉
+    var myinfoWindow1 = new google.maps.InfoWindow({
+      content: '富士山 <%= link_to '詳細を見る', 'http://www.fujisan-climb.jp/', target: :_blank %>'
     });
+      google.maps.event.addListener(marker1, "click", function(event){
+        myinfoWindow1.open(map, marker1);
+      });
 
-  // マップ上のマーカー表示
-  var marker3 = new google.maps.Marker({
-    position: {lat: 40.578791, lng: 140.298657},
-    map: map
-  });
-  // マーカーの詳細をクリックで開閉
-  var myinfoWindow3 = new google.maps.InfoWindow({
-    content: '白神山地 <%= link_to '詳細を見る', 'http://www.shirakami-visitor.jp/', target: :_blank %>'
-  });
-    google.maps.event.addListener(marker3, "click", function(event){
-      myinfoWindow3.open(map, marker3);
+    // マップ上のマーカー表示
+    var marker2 = new google.maps.Marker({
+      position: {lat: 32.701497, lng: 131.301031},
+      map: map
     });
+    // マーカーの詳細をクリックで開閉
+    var myinfoWindow2 = new google.maps.InfoWindow({
+      content: '高千穂峡 <%= link_to '詳細を見る', 'https://www.miyazaki-city.tourism.or.jp/spot/10062', target: :_blank %>'
+    });
+      google.maps.event.addListener(marker2, "click", function(event){
+        myinfoWindow2.open(map, marker2);
+      });
 
-  // マップ上のマーカー表示
-  var marker4 = new google.maps.Marker({
-    position: {lat: 34.732845, lng: 135.204356},
-    map: map
-  });
-  // マーカーの詳細をクリックで開閉
-  var myinfoWindow4 = new google.maps.InfoWindow({
-    content: '六甲山・摩耶山 <%= link_to '詳細を見る', 'https://www.feel-kobe.jp/area-guide/rokko-maya/', target: :_blank %>'
-  });
-    google.maps.event.addListener(marker4, "click", function(event){
-      myinfoWindow4.open(map, marker4);
+    // マップ上のマーカー表示
+    var marker3 = new google.maps.Marker({
+      position: {lat: 40.578791, lng: 140.298657},
+      map: map
     });
+    // マーカーの詳細をクリックで開閉
+    var myinfoWindow3 = new google.maps.InfoWindow({
+      content: '白神山地 <%= link_to '詳細を見る', 'http://www.shirakami-visitor.jp/', target: :_blank %>'
+    });
+      google.maps.event.addListener(marker3, "click", function(event){
+        myinfoWindow3.open(map, marker3);
+      });
 
-  // マップ上のマーカー表示
-  var marker5 = new google.maps.Marker({
-    position: {lat: 34.45501, lng: 136.725793},
-    map: map
-  });
-  // マーカーの詳細をクリックで開閉
-  var myinfoWindow5 = new google.maps.InfoWindow({
-    content: '伊勢神宮 <%= link_to '詳細を見る', 'https://www.isejingu.or.jp/', target: :_blank %>'
-  });
-    google.maps.event.addListener(marker5, "click", function(event){
-      myinfoWindow5.open(map, marker5);
+    // マップ上のマーカー表示
+    var marker4 = new google.maps.Marker({
+      position: {lat: 34.732845, lng: 135.204356},
+      map: map
     });
-</script>
+    // マーカーの詳細をクリックで開閉
+    var myinfoWindow4 = new google.maps.InfoWindow({
+      content: '六甲山・摩耶山 <%= link_to '詳細を見る', 'https://www.feel-kobe.jp/area-guide/rokko-maya/', target: :_blank %>'
+    });
+      google.maps.event.addListener(marker4, "click", function(event){
+        myinfoWindow4.open(map, marker4);
+      });
+
+    // マップ上のマーカー表示
+    var marker5 = new google.maps.Marker({
+      position: {lat: 34.45501, lng: 136.725793},
+      map: map
+    });
+    // マーカーの詳細をクリックで開閉
+    var myinfoWindow5 = new google.maps.InfoWindow({
+      content: '伊勢神宮 <%= link_to '詳細を見る', 'https://www.isejingu.or.jp/', target: :_blank %>'
+    });
+      google.maps.event.addListener(marker5, "click", function(event){
+        myinfoWindow5.open(map, marker5);
+      });
+  </script>
+
+</div>
