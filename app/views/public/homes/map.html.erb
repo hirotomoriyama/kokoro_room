@@ -12,4 +12,69 @@
     mapTypeId: 'roadmap'
   };
   var map = new google.maps.Map(document.getElementById('map'), Options);
+
+  // マップ上のマーカー表示
+  var marker1 = new google.maps.Marker({
+    position: {lat: 35.360626, lng: 138.727363},
+    map: map
+  });
+  // マーカーの詳細をクリックで開閉
+  var myinfoWindow1 = new google.maps.InfoWindow({
+    content: '富士山 <%= link_to '詳細を見る', 'http://www.fujisan-climb.jp/', target: :_blank %>'
+  });
+    google.maps.event.addListener(marker1, "click", function(event){
+      myinfoWindow1.open(map, marker1);
+    });
+
+  // マップ上のマーカー表示
+  var marker2 = new google.maps.Marker({
+    position: {lat: 32.701497, lng: 131.301031},
+    map: map
+  });
+  // マーカーの詳細をクリックで開閉
+  var myinfoWindow2 = new google.maps.InfoWindow({
+    content: '高千穂峡 <%= link_to '詳細を見る', 'https://www.miyazaki-city.tourism.or.jp/spot/10062', target: :_blank %>'
+  });
+    google.maps.event.addListener(marker2, "click", function(event){
+      myinfoWindow2.open(map, marker2);
+    });
+
+  // マップ上のマーカー表示
+  var marker3 = new google.maps.Marker({
+    position: {lat: 40.578791, lng: 140.298657},
+    map: map
+  });
+  // マーカーの詳細をクリックで開閉
+  var myinfoWindow3 = new google.maps.InfoWindow({
+    content: '白神山地 <%= link_to '詳細を見る', 'http://www.shirakami-visitor.jp/', target: :_blank %>'
+  });
+    google.maps.event.addListener(marker3, "click", function(event){
+      myinfoWindow3.open(map, marker3);
+    });
+
+  // マップ上のマーカー表示
+  var marker4 = new google.maps.Marker({
+    position: {lat: 34.732845, lng: 135.204356},
+    map: map
+  });
+  // マーカーの詳細をクリックで開閉
+  var myinfoWindow4 = new google.maps.InfoWindow({
+    content: '六甲山・摩耶山 <%= link_to '詳細を見る', 'https://www.feel-kobe.jp/area-guide/rokko-maya/', target: :_blank %>'
+  });
+    google.maps.event.addListener(marker4, "click", function(event){
+      myinfoWindow4.open(map, marker4);
+    });
+
+  // マップ上のマーカー表示
+  var marker5 = new google.maps.Marker({
+    position: {lat: 34.45501, lng: 136.725793},
+    map: map
+  });
+  // マーカーの詳細をクリックで開閉
+  var myinfoWindow5 = new google.maps.InfoWindow({
+    content: '伊勢神宮 <%= link_to '詳細を見る', 'https://www.isejingu.or.jp/', target: :_blank %>'
+  });
+    google.maps.event.addListener(marker5, "click", function(event){
+      myinfoWindow5.open(map, marker5);
+    });
 </script>
