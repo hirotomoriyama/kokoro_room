@@ -13,55 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+// bootstrap導入のための記述
  @import "bootstrap";
+// fontawesome導入のための記述
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+// 全体の余白等のリセット
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html{
-  height: 100%;
-}
-
+// 全ページの背景色を指定
 body{
-  height: 100%;
   background-color: #fdede4;
 }
 
+// ヘッダーのロゴのcss
 .logo{
   width: 100px;
   height: 50px;
   border-radius: 75%;
 }
 
+// リンク選択時の下線を消去
 a:hover{
   text-decoration: none;
 }
 
-#slide{
-  width: 100%;
-  height: 40vw;
-  object-fit: cover;
-}
-
-.acmenu{
-  margin-left: 30px;
-}
-
-.acmenu dt{
-  display: block;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.acmenu dd{
-  display: none;
-}
-
+// サクセスメッセージとエラーメッセージによるレイアウト崩れの防止
 .form{
   display: contents;
   height: auto;
