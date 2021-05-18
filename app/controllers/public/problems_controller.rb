@@ -26,6 +26,15 @@ class Public::ProblemsController < Public::ApplicationController
     @problem = Problem.find(params[:id])
   end
 
+  def update
+    @problem = Problem.find(params[:id])
+    if @problem.update(problem_params)
+      flash[:notice] = "ベストアンサーを決定しました"
+      # ベストアンサー決定後、同ページへ遷移
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def destroy
     @problem = Problem.find(params[:id])
     @problem.destroy

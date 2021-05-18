@@ -9,6 +9,13 @@
   <!--サクセスメッセージの表示-->
   <%= render 'layouts/notice' %>
 
+  <!--ベストアンサーが決定であれば、文章を表示-->
+  <% if @problem.best_answer_id.present? %>
+    <div class="row">
+      <h4 class="text-center text-danger">この悩み事への回答受付は終了しました</h4>
+    </div>
+  <% end %>
+
   <!--悩み事の詳細画面-->
   <div class="row my-5">
     <div class="col-6">
@@ -39,8 +46,11 @@
   <!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
   <div class="row ml-2 pl-5">
     <% if @problem.member_id == current_member.id %>
-      <%= link_to problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
-        <i class="fas fa-trash-alt"></i> 悩み事を削除
+      <!--ベストアンサーが決定であれば、悩み事の削除リンクが非表示-->
+      <% unless @problem.best_answer_id.present? %>
+        <%= link_to problem_path(@problem.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
+          <i class="fas fa-trash-alt"></i> 悩み事を削除
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -48,8 +58,11 @@
   <!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
   <div class="row ml-2 pl-5">
     <% if @problem.member_id != current_member.id %>
-      <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-3 btn btn-success" do %>
-        <i class="fas fa-plus-circle"></i> 回答を投稿
+      <!--ベストアンサーが決定であれば、回答の投稿リンクが非表示-->
+      <% unless @problem.best_answer_id.present? %>
+        <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-3 btn btn-success" do %>
+          <i class="fas fa-plus-circle"></i> 回答を投稿
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -62,8 +75,16 @@
 
     <% @problem.advices.reverse_each do |advice| %>
 
-    <div class="row pt-3 pl-3 border-top border-secondary">
-      <h4 class="col-4"><i class="far fa-comment-dots"></i> <%= advice.member.name %>さんからの回答</h4>
+    <div class="pt-3 pl-3 border-top border-secondary">
+      <div class="row">
+      <!--回答がベストアンサーの場合、ベストアンサーの文字を表示-->
+      <% if @problem.best_answer_id == advice.id %>
+        <h4 class="text-warning"><i class="fas fa-award"></i> ベストアンサー</h4>
+      <% end %>
+      </div>
+      <div class="row">
+        <h4 class="col-4"><i class="far fa-comment-dots"></i> <%= advice.member.name %>さんからの回答</h4>
+      </div>
     </div>
 
     <div class="row pl-3">
@@ -82,9 +103,12 @@
     <!--自分の悩み事の投稿であれば、ベストアンサーのリンクが表示-->
     <div class="row ml-2 pl-5">
     <% if @problem.member_id == current_member.id %>
-      <%= form_with model: @problem, local:true do |f| %>
+      <%= form_with model: @problem, local:true, data: {confirm: "#{advice.member.name}さんの回答をベストアンサーにします。決定後は変更できませんが、よろしいですか？"} do |f| %>
         <%= f.hidden_field :best_answer_id, value: advice.id %>
-        <%= f.submit 'ベストアンサーにする' %>
+        <!--ベストアンサー決定後、変更不可にする設定-->
+        <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-info", disabled: @problem.best_answer_id.present? do %>
+          <i class="fas fa-handshake"></i> ベストアンサーにする
+        <% end %>
       <% end %>
     <% end %>
     </div>
@@ -92,8 +116,11 @@
       <!--回答の投稿者であれば、回答の削除リンクが表示-->
       <div class="row pl-5">
       <% if advice.member_id == current_member.id %>
-        <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
-          <i class="fas fa-trash-alt"></i> 回答を削除
+        <!--ベストアンサーが決定であれば、回答の削除リンクが非表示-->
+        <% unless @problem.best_answer_id.present? %>
+          <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
+            <i class="fas fa-trash-alt"></i> 回答を削除
+          <% end %>
         <% end %>
       <% end %>
       </div>
@@ -101,8 +128,11 @@
       <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
       <div class="row pl-5">
       <% if @problem.member_id == current_member.id %>
-        <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-3 btn btn-success" do %>
-          <i class="fas fa-plus-circle"></i> 返事を投稿
+        <!--ベストアンサーが決定であれば、返事の投稿リンクが非表示-->
+        <% unless @problem.best_answer_id.present? %>
+          <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-3 btn btn-success" do %>
+            <i class="fas fa-plus-circle"></i> 返事を投稿
+          <% end %>
         <% end %>
       <% end %>
       </div>
@@ -144,8 +174,11 @@
           <!--返事の投稿者であれば、返事の削除リンクが表示-->
           <div class="row pl-5">
           <% if response.member_id == current_member.id %>
-            <%= link_to problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
-              <i class="fas fa-trash-alt"></i> 返事を削除
+            <!--ベストアンサーが決定であれば、返事の削除リンクが非表示-->
+            <% unless @problem.best_answer_id.present? %>
+              <%= link_to problem_advice_response_path(@problem, response.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
+                <i class="fas fa-trash-alt"></i> 返事を削除
+              <% end %>
             <% end %>
           <% end %>
           </div>

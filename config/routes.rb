@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
     post "members/guest_sign_in" => "members#guest_sign_in"
 
-    resources :problems, except: [:edit, :update] do
+    resources :problems, except: [:edit] do
       resources :advices, only: [:new, :create, :destroy] do
         resources :responses, only: [:new, :create, :destroy]
         resource :favorites, only: [:create, :destroy]
