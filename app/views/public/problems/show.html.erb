@@ -79,6 +79,16 @@
       <%= render 'advice', problem: @problem, advice: advice %>
     </div>
 
+    <!--自分の悩み事の投稿であれば、ベストアンサーのリンクが表示-->
+    <div class="row ml-2 pl-5">
+    <% if @problem.member_id == current_member.id %>
+      <%= form_with model: @problem, local:true do |f| %>
+        <%= f.hidden_field :best_answer_id, value: advice.id %>
+        <%= f.submit 'ベストアンサーにする' %>
+      <% end %>
+    <% end %>
+    </div>
+
       <!--回答の投稿者であれば、回答の削除リンクが表示-->
       <div class="row pl-5">
       <% if advice.member_id == current_member.id %>

@@ -38,6 +38,6 @@ class Public::ProblemsController < Public::ApplicationController
 
   # 悩み投稿時、タイトルと本文を入力、カテゴリーを選択するための設定
   def problem_params
-    params.require(:problem).permit(:title, :body, :category_id)
+    params.require(:problem).permit(:title, :body, :category_id, :best_answer_id)
   end
 end
