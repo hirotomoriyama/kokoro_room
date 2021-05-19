@@ -19,12 +19,18 @@
 回答ユーザ：自身の経験や事実に基づき回答を行うことで悩み事の投稿ユーザーに貢献する。
 
 ## 設計書
-- ER図：![er diagram of kokororoom](kokororoom.pdf)
+- ER図：![ER diagram of kokororoom](kokororoom.pdf)
 - テーブル定義書：<https://docs.google.com/spreadsheets/d/15mzxt2WLSoebQSZWbUkkS85od3sn2AEkfnlARnMxiRg/edit#gid=1103207792>
 - アプリケーション詳細設計：<https://docs.google.com/spreadsheets/d/18ZRYB34QpNBsdPuxD5K42SW8rg5RTCGZxvriq3ejUw8/edit#gid=1103207792>
 
-## チャレンジ要素一覧
+## チャレンジ要素一覧（クラウド教養コース）
 <https://docs.google.com/spreadsheets/d/1shkEyJwCbleSk7vb_zrenDIepNJFgTiWnPpfMmIJqHE/edit#gid=0>
+
+## AWS構成図
+![AWS configuration diagram of kokororoom](aws_construction.pdf)
+
+## インフラ設計書
+<https://docs.google.com/spreadsheets/d/1KrcxUMMjBToLkSamYS2bLmq3rh6_HS4C65Zxahq3hAA/edit#gid=0>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,6 +39,7 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+## 本番環境
+- AWS(VPC,AZ,EC2,RDS for MySQL)
+- MySQL2
+- Nginx,Puma
