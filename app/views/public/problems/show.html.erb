@@ -19,7 +19,14 @@
   <!--悩み事の詳細画面-->
   <div class="row my-5">
     <div class="col-6">
-      <h2 class="mark text-center rounded"><%= @problem.member.name %>さんの悩み事詳細</h2>
+      <h2 class="mark text-center rounded">
+        <!--ユーザーが退会していればニックネームを非表示-->
+        <% if @problem.member.is_deleted == false %>
+          <%= @problem.member.name %>さんの悩み事詳細
+        <% else %>
+          退会済みユーザーさんの悩み事詳細
+        <% end %>
+      </h2>
     </div>
   </div>
 
@@ -83,7 +90,14 @@
       <% end %>
       </div>
       <div class="row">
-        <h4 class="col-4"><i class="far fa-comment-dots"></i> <%= advice.member.name %>さんからの回答</h4>
+        <!--ユーザーが退会していればニックネームを非表示-->
+        <h4 class="col-4">
+          <% if advice.member.is_deleted == false %>
+            <i class="far fa-comment-dots"></i> <%= advice.member.name %>さんからの回答
+          <% else %>
+            <i class="far fa-comment-dots"></i> 退会済みユーザーさんからの回答
+          <% end %>
+        </h4>
       </div>
     </div>
 
@@ -143,7 +157,14 @@
         <% advice.responses.reverse_each do |response| %>
 
           <div class="row pt-3 pl-5">
-            <h4 class="col-4"><i class="fas fa-reply fa-rotate-180"></i> <%= response.member.name %>さんからの返事</h4>
+            <!--ユーザーが退会していればニックネームを非表示-->
+            <h4 class="col-4">
+              <% if response.member.is_deleted == false %>
+                <i class="fas fa-reply fa-rotate-180"></i> <%= response.member.name %>さんからの返事
+              <% else %>
+                <i class="fas fa-reply fa-rotate-180"></i> 退会済みユーザーさんからの返事
+              <% end %>
+            </h4>
           </div>
 
           <div class="row pl-5">
