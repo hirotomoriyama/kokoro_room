@@ -29,9 +29,10 @@
       <!--ユーザーが退会していればニックネームを非表示-->
       <h4>
         <% if data.member.is_deleted == false %>
-          <%= data.member.name %>さんの投稿
+          <%= attachment_image_tag data.member, :image, size:"40x40", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %> <%= data.member.name %>さんの投稿
         <% else %>
-          退会済みユーザーさんの投稿
+          <!--ユーザーが退会していれば、プロフィール画像はデフォルト表示-->
+          <%= image_tag "no_image.jpg", size:"40x40", format:'jpeg', class:"rounded-circle" %> 退会済みユーザーさんの投稿
         <% end %>
       </h4>
 

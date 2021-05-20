@@ -20,6 +20,11 @@
   </div>
 
   <div class="row pl-5">
+    <h5 class="col-4">プロフィール画像</h5>
+    <p class="col-3"><%= attachment_image_tag @member, :image, size:"50x50", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %></p>
+  </div>
+
+  <div class="row pl-5">
     <h5 class="col-4">メールアドレス</h5>
     <p class="col-3"><%= @member.email %></p>
   </div>

@@ -27,7 +27,7 @@
 
       <h4>会員名</h4>
       <!--会員名をクリックすると会員詳細画面に遷移-->
-      <%= link_to problem.member.name, admin_member_path(problem.member_id) %>さん
+      <%= attachment_image_tag problem.member, :image, size:"40x40", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %> <%= link_to problem.member.name, admin_member_path(problem.member_id) %>さん
 
       <h5 class="mt-3">投稿日時</h5>
       <%= problem.created_at.to_s(:datetime_jp) %>
