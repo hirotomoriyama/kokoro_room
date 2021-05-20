@@ -38,7 +38,8 @@
 
   <div class="row mr-5 pl-5 py-3">
     <div class="offset-3 col-3">
-      <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
+      <!--ベストアンサー決定後は、投稿出来ないよう設定-->
+      <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success", disabled: @advice.problem.best_answer_id.present? do %>
         <i class="fas fa-plus-circle"></i> 投稿
       <% end %>
     </div>
