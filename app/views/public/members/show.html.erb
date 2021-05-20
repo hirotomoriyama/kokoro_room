@@ -20,15 +20,6 @@
   </div>
 
   <div class="row pl-5 pb-3">
-    <h5 class="col-4">プロフィール文</h5>
-    <% if @member.body.present? %>
-      <p class="col-3"><%= @member.body %></p>
-    <% else %>
-      <p class="col-3">未設定</p>
-    <% end %>
-  </div>
-
-  <div class="row pl-5 pb-3">
     <h5 class="col-4">悩み事の投稿総数</h5>
     <p class="col-3"><%= @member.problems.count %>件</p>
   </div>
