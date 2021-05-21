@@ -1,12 +1,12 @@
 class Public::ContactsController < Public::ApplicationController
+  before_action :authenticate_member!, except: [:new, :create]
+
   def new
     @contact = Contact.new
   end
 
   def create
     @contact = Contact.new(contact_params)
-    # ログイン中の会員が投稿
-    @contact.member_id = current_member.id
     if @contact.save
       # メール送信の実行
       ContactMailer.contact_mail(@contact).deliver

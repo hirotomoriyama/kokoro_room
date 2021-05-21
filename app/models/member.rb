@@ -8,7 +8,6 @@ class Member < ApplicationRecord
   has_many :advices, dependent: :destroy
   has_many :responses, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :contacts, dependent: :destroy
 
   # refileの使用
   attachment :image
