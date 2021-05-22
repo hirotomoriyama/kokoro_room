@@ -22,8 +22,8 @@ class Public::ContactsController < Public::ApplicationController
 
   private
 
-  # 問い合わせ内容の投稿時、名前と本文を入力するための設定
+  # 問い合わせ内容の投稿時、名前、本文、メールアドレスを入力するための設定
   def contact_params
-    params.require(:contact).permit(:name, :body)
+    params.require(:contact).permit(:name, :body, :email)
   end
 end
