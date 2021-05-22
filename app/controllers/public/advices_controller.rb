@@ -11,6 +11,8 @@ class Public::AdvicesController < Public::ApplicationController
     # 回答に対する悩み事の指定
     @advice.problem_id = params[:problem_id]
     if @advice.save
+      # メール送信の実行
+      AdviceMailer.advice_mail(@advice).deliver
       flash[:notice] = '回答を投稿しました'
       # 回答投稿後、悩み事詳細画面に遷移
       redirect_to problem_path(@advice.problem_id)
