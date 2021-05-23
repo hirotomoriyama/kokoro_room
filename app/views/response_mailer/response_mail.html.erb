@@ -1,0 +1,18 @@
+<!--HTML形式のメールテンプレート-->
+<h5>kokororoom 返事の内容</h5>
+
+<p>--------------------------</p>
+
+<p><%= @response.member.name %>さんからの返事</p>
+
+<p>返事の内容：<%= @response.body %></p>
+
+<p>--------------------------</p>
+
+<p>回答の内容：<%= @response.advice.body %></p>
+
+<p>==========================</p>
+
+<p>kokororoom：<%= link_to 'kokororoom', root_url %></p>
+
+<p>==========================</p>

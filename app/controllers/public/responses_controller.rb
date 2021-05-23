@@ -11,6 +11,8 @@ class Public::ResponsesController < Public::ApplicationController
     # 返事に対する回答の指定
     @response.advice_id = params[:advice_id]
     if @response.save
+      # メール送信の実行
+      ResponseMailer.response_mail(@response).deliver
       flash[:notice] = '返事を投稿しました'
       # 返事投稿後、悩み事詳細画面に遷移
       redirect_to problem_path(@response.advice.problem_id)
