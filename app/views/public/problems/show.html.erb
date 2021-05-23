@@ -196,7 +196,7 @@
           </script>
 
           <!--返事の投稿者であれば、返事の削除リンクが表示-->
-          <div class="row pl-5">
+          <div class="row pl-5 pb-5">
           <% if response.member_id == current_member.id %>
             <!--ベストアンサーが決定であれば、返事の削除リンクが非表示-->
             <% unless @problem.best_answer_id.present? %>
