@@ -66,8 +66,8 @@
   <!--他人の悩み事の投稿であれば、回答の投稿リンクが表示-->
   <div class="row ml-2 pl-5">
     <% if @problem.member_id != current_member.id %>
-      <!--ベストアンサーが決定であれば、回答の投稿リンクが非表示-->
-      <% unless @problem.best_answer_id.present? %>
+      <!--ベストアンサー決定後、または悩み事の投稿者が退会状態であれば回答の投稿リンクが非表示-->
+      <% unless (@problem.best_answer_id.present?) || (@problem.member.is_deleted == true) %>
         <%= link_to new_problem_advice_path(@problem.id), class:"offset-3 col-3 btn btn-success" do %>
           <i class="fas fa-plus-circle"></i> 回答を投稿
         <% end %>
