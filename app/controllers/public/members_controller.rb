@@ -1,6 +1,8 @@
 class Public::MembersController < Public::ApplicationController
   def show
     @member = current_member
+    @problems = @member.problems
+    @unsolved_problems = Problem.where(member_id: @member.id, best_answer_id: nil)
   end
 
   def edit
