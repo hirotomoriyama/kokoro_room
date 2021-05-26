@@ -3,10 +3,7 @@
 
 <div class="container pb-5">
 
-  <!--サクセスメッセージの表示-->
-  <%= render 'layouts/notice' %>
-
-  <span style="position:fixed; top:80px; right:20px;">
+  <span style="position:fixed; top:100px; right:20px;">
     <%= link_to members_my_page_path, class:"btn btn-success" do %>
       <h6 class="mt-2"><i class="fas fa-user"></i> マイページ</h6>
     <% end %>
@@ -15,6 +12,9 @@
       <h6 class="mt-2"><i class="far fa-envelope"></i> お問い合わせ</h6>
     <% end %>
   </span>
+
+  <!--サクセスメッセージの表示-->
+  <%= render 'layouts/notice' %>
 
   <div class="row my-5">
     <div class="col-6">
