@@ -133,8 +133,8 @@
       <!--回答の投稿者であれば、回答の削除リンクが表示-->
       <div class="row pl-5">
       <% if advice.member_id == current_member.id %>
-        <!--ベストアンサーが決定であれば、回答の削除リンクが非表示-->
-        <% unless @problem.best_answer_id.present? %>
+        <!--ベストアンサーが決定済み、または悩み事の投稿者が退会状態であれば、回答の削除リンクが非表示-->
+        <% unless (@problem.best_answer_id.present?) || (@problem.member.is_deleted != false) %>
           <%= link_to problem_advice_path(advice.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"offset-3 col-3 btn btn-danger" do %>
             <i class="fas fa-trash-alt"></i> 回答を削除
           <% end %>
