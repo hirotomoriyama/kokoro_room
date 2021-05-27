@@ -14,6 +14,8 @@ class Admin::MembersController < Admin::ApplicationController
   def update
     @member = Member.find(params[:id])
     @member.update(member_params)
+    # メール送信の実行
+    MemberMailer.status_mail(@member).deliver
     flash[:notice] = '会員情報を編集しました'
     # 編集後は会員詳細画面へ遷移
     redirect_to admin_member_path
