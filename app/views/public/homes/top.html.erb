@@ -4,6 +4,10 @@
 <div class="container pb-5">
 
   <span style="position:fixed; top:100px; right:20px;">
+    <%= link_to new_problem_path, class:"btn btn-primary" do %>
+      <h6 class="mt-2"><i class="fas fa-comment-medical"></i> 悩み事の投稿</h6>
+    <% end %>
+
     <%= link_to members_my_page_path, class:"btn btn-success" do %>
       <h6 class="mt-2"><i class="fas fa-user"></i> マイページ</h6>
     <% end %>
@@ -22,10 +26,13 @@
         <%= attachment_image_tag @member, :image, size:"50x50", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %> <%= @member.name %>さんの悩み事履歴一覧
       </h2>
     </div>
-
-    <div class="col-6 pl-5">
-      <%= link_to new_problem_path, class:"btn btn-primary" do %>
-        <h4 class="mt-2"><i class="fas fa-comment-medical"></i> 悩み事の投稿</h4>
+    <div class="form-inline">
+      <!--悩み事の絞り込み検索-->
+      <%= form_tag(root_path, method: :get) do %>
+        <%= select_tag 'option', options_for_select({"全て表示" => "all", "回答受付中" => "unsolved", "解決済み" => "solved"}), class:"form-control form-control-lg badge badge-light" %>
+        <%= button_tag :type => "submit", :class => "form-control form-control-lg badge badge-light" do %>
+          <i class="fa fa-search"></i> 絞り込み検索
+        <% end %>
       <% end %>
     </div>
   </div>
