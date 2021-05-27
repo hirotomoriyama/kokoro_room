@@ -1,7 +1,7 @@
 <!--ページタイトルの指定-->
 <% content_for :title do %>
   <% if @content.present? %>
-    「<%= @content %>」の検索結果一覧 | kokoro room
+    「<%= @content %>」の検索結果 | kokoro room
   <% else %>
     検索ワードが入力されていません | kokoro room
   <% end %>
@@ -13,7 +13,7 @@
     <div class="col-6">
       <!--検索結果により見出しを変更-->
       <% if @content.present? %>
-        <h2 class="mark text-center rounded">「<%= @content %>」の検索結果一覧</h2>
+        <h2 class="mark text-center rounded">「<%= @content %>」の検索結果</h2>
       <% else %>
         <h2 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i> 検索ワードが入力されていません</h2>
       <% end %>
@@ -21,8 +21,7 @@
   </div>
 
 <!--検索結果がある場合-->
-<% if @datas.present? %>
-
+<% if (@datas.present?) && (@content.present?) %>
   <div class="row d-flex flex-wrap pb-5">
 
     <% @datas.reverse_each do |data| %>
@@ -59,29 +58,23 @@
       <%= data.category.name %>
     </div>
 
-  <% end %>
+    <% end %>
 
   <%= render 'layouts/back' %>
 
   </div>
-
-<!--検索結果が無い場合-->
+<!--検索欄に入力はあるが、検索結果が無い場合-->
+<% elsif (@datas.blank?) && (@content.present?) %>
+  <p class="ml-5 pl-5">
+    検索結果はありませんでした。<br />
+    検索しても見つからない場合は<%= link_to 'こちら', new_problem_path %>から悩み事を投稿しましょう。
+  </p>
+<!--検索欄に入力が無い場合-->
 <% else %>
-
-  <div class="row pl-5">
-    <% if @content.present? %>
-      <p class="ml-5 pl-5">
-        検索結果はありませんでした。<br />
-        検索しても見つからない場合は<%= link_to 'こちら', new_problem_path %>から悩み事を投稿しましょう。
-      </p>
-    <% else %>
-      <p class="ml-5 pl-5">
-        検索ワードを入力後、再度検索してください。<br />
-        検索しても見つからない場合は<%= link_to 'こちら', new_problem_path %>から悩み事を投稿しましょう。
-      </p>
-    <% end %>
-  </div>
-
+  <p class="ml-5 pl-5">
+    検索ワードを入力後、再度検索してください。<br />
+    検索しても見つからない場合は<%= link_to 'こちら', new_problem_path %>から悩み事を投稿しましょう。
+  </p>
 <% end %>
 
 </div>

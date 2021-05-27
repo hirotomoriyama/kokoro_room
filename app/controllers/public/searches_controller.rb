@@ -1,35 +1,22 @@
 class Public::SearchesController < Public::ApplicationController
   def search
     # 検索対象のモデルを格納
-    @model = params['search']['model']
+    @column = params['column']
     # 検索内容を格納
-    @content = params['search']['content']
-    # 検索方法を格納
-    @how = params['search']['how']
-    # 上記3つを用いて検索
-    @datas = search_for(@model, @content, @how)
+    @content = params['content']
+    # 上記2つを用いて検索
+    @datas = search_for(@column, @content)
   end
 
   private
 
-  # 検索された悩み事のタイトルが完全一致するものを取得
-  def match(model, content)
-    Problem.where(title: content)
-  end
-
-  # 検索された悩み事のタイトルが部分一致するものを取得
-  def partical(model, content)
-    Problem.where('title LIKE ?', "%#{content}%")
-  end
-
-  def search_for(model, content, how)
-    case how
-    # 完全一致の場合の検索
-    when 'match'
-      match(model, content)
-    # 部分一致の場合の検索
-    when 'partical'
-      partical(model, content)
+  def search_for(column, content)
+    if column == 'title'
+      # 検索された悩み事のタイトルを取得
+      Problem.where("title LIKE ?", "%#{content}%")
+    elsif column == 'body'
+      # 検索された悩み事の内容を取得
+      Problem.where("body LIKE ?", "%#{content}%")
     end
   end
 end
