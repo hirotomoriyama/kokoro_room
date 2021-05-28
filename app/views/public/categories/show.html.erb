@@ -9,16 +9,29 @@
     <div class="col-6">
       <h2 class="mark text-center rounded"><%= @category.name %>に関する悩み事一覧</h2>
     </div>
+    <div class="form-inline">
+      <!--悩み事の絞り込み検索-->
+      <%= form_tag(category_path(@category), method: :get) do %>
+        <%= select_tag 'option', options_for_select({"全て表示" => "all", "回答受付中" => "unsolved", "解決済み" => "solved", "回答受付終了" => "finished"}), class:"form-control form-control-lg badge badge-light" %>
+        <%= button_tag :type => "submit", :class => "form-control form-control-lg badge badge-light" do %>
+          <i class="fa fa-search"></i> 絞り込み検索
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <% if @category.problems.present? %>
+  <% if @problems.present? %>
   <div class="row d-flex flex-wrap pb-5">
-    <% @category.problems.reverse_each do |problem| %>
+    <% @problems.reverse_each do |problem| %>
 
     <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
-      <!--ベストアンサーが決定済みであれば解決済みを表示、未決定であれば回答受付中を表示-->
+      <!--ベストアンサーが決定済みの場合-->
       <% if problem.best_answer_id.present? %>
         <h5 class="text-success"><i class="fas fa-check-circle"></i> 解決済み</h5>
+      <!--ベストアンサーが未決定、悩み事の投稿者が退会状態の場合-->
+      <% elsif problem.member.is_deleted != false %>
+        <h5 class="text-secondary"><i class="far fa-hand-paper"></i> 回答受付終了</h5>
+      <!--上記以外の場合-->
       <% else %>
         <h5 class="text-danger"><i class="fas fa-bullhorn"></i> 回答受付中</h5>
       <% end %>
