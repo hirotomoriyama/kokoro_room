@@ -61,7 +61,7 @@ class Public::ProblemsController < Public::ApplicationController
       Problem.where(best_answer_id: nil, member_id: @members.ids)
     # 解決済みの場合
     elsif option == "solved"
-      @members = Member.where(is_deleted: false)
+      @members = Member.all
       Problem.where.not(best_answer_id: nil).where(member_id: @members.ids)
     # 回答受付終了の場合
     elsif option == "finished"
