@@ -12,6 +12,15 @@
     <div class="col-6">
       <h2 class="mark text-center rounded">悩み事一覧</h2>
     </div>
+    <div class="form-inline">
+      <!--悩み事の絞り込み検索-->
+      <%= form_tag(admin_path, method: :get) do %>
+        <%= select_tag 'option', options_for_select({"全て表示" => "all", "回答受付中" => "unsolved", "解決済み" => "solved", "回答受付終了" => "finished"}), class:"form-control form-control-lg badge badge-light" %>
+        <%= button_tag :type => "submit", :class => "form-control form-control-lg badge badge-light" do %>
+          <i class="fa fa-search"></i> 絞り込み検索
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row d-flex flex-wrap">
