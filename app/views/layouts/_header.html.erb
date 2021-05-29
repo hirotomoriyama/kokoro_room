@@ -67,6 +67,7 @@
   <%= form_tag(searches_path, method: :get) do %>
     <%= select_tag 'column', options_for_select({"タイトルから悩み事の検索" => "title", "内容から悩み事の検索" => "body"}), class:"form-control form-control-sm" %>
     <%= text_field_tag('content', "", {class:"form-control form-control-sm", placeholder:"ここに入力して下さい"}) %>
+    <%= select_tag 'option', options_for_select({"全て表示" => "all", "回答受付中" => "unsolved", "解決済み" => "solved", "回答受付終了" => "finished"}), class:"form-control form-control-sm" %>
     <%= button_tag :type => "submit", :class => "form-control form-control-sm" do %>
       <i class="fa fa-search"></i> 検索
     <% end %>
