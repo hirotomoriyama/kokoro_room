@@ -57,7 +57,7 @@
 
   <div class="row mr-5 pl-5 pb-3">
     <div class="offset-3 col-3">
-      <%= link_to member_line_omniauth_authorize_path, class:"form-control form-control-sm btn btn-success" do %>
+      <%= link_to member_line_omniauth_authorize_path, class:"form-control form-control-sm btn btn-success", method: :post do %>
         <i class="fab fa-line fa-lg"></i> LINEログイン
       <% end %>
     </div>
