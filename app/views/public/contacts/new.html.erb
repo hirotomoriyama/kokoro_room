@@ -3,7 +3,7 @@
   お問い合わせフォーム | kokoro room
 <% end %>
 
-<div class="container">
+<div class="container pb-5">
 
   <!--エラーメッセージの表示-->
   <%= render 'layouts/alert' %>
@@ -39,7 +39,7 @@
     <%= f.text_area :body, class:"col-5", rows:"10", placeholder:"お問い合わせ内容を入力してください" %>
   </div>
 
-  <div class="row mr-5 pl-5 pb-3">
+  <div class="row mr-5 pl-5 pb-5">
     <div class="offset-3 col-3">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
         <i class="far fa-envelope"></i> 送信

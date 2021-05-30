@@ -100,6 +100,11 @@
       <% end %>
     </li>
     <li class="nav-item pl-3">
+      <%= link_to new_admin_session_path, class:"nav-link" do %>
+        <i class="fas fa-user-tie"></i> 管理者ログイン
+      <% end %>
+    </li>
+    <li class="nav-item pl-3">
       <%= link_to members_guest_sign_in_path, method: :post, class:"nav-link" do %>
         <i class="fas fa-forward"></i> ゲストログイン
       <% end %>
