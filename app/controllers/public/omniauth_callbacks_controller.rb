@@ -5,8 +5,9 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def basic_action
-    @omniauth = request.env['omniauth']
+    @omniauth = request.env['omniauth.auth']
     # LINEアカウントのプロバイダーとUIDがあれば取得
+    pp request.env['omniauth.auth']
     if @omniauth.present?
       @profile = Member.where(provider: @omniauth['provider'], uid: @omniauth['uid']).first
       # memberモデルで作成したレコードがあればログイン
@@ -20,7 +21,6 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @profile = current_member || Member.create!(provider: @omniauth['provider'], uid: @omniauth['uid'], email: email, name: @omniauth['info']['name'], password: Devise.friendly_token[0, 20])
         @profile.set_values(@omniauth)
         sign_in(:member, @profile)
-        redirect_back(fallback_location: root_path)
       end
     end
     flash[:notice] = "ログインしました"

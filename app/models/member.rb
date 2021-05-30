@@ -25,12 +25,6 @@ class Member < ApplicationRecord
     _access_secret = credentials['secret']
     credentials = credentials.to_json
     _name = info['name']
-    self.set_values_by_raw_info(omniauth['extra']['raw_info'])
-  end
-
-  def set_values_by_raw_info(raw_info)
-    self.raw_info = raw_info.to_json
-    self.save!
   end
 
   # refileの使用
