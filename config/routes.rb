@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions',
     passwords: 'public/passwords',
+    omniauth_callbacks: 'public/omniauth_callbacks'
   }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
