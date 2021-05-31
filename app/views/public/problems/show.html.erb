@@ -145,8 +145,8 @@
       <!--回答が存在、かつログインユーザーが悩み事の投稿者の場合、返事の投稿リンクが表示-->
       <div class="row pl-5">
       <% if @problem.member_id == current_member.id %>
-        <!--ベストアンサーが決定済み、または回答に対して返事を投稿済みであれば、返事の投稿リンクが非表示-->
-        <% unless (@problem.best_answer_id.present?) || (advice.responses.present?) %>
+        <!--ベストアンサーが決定済み、または回答に対して返事を投稿済み、または回答者が退会状態であれば、返事の投稿リンクが非表示-->
+        <% unless (@problem.best_answer_id.present?) || (advice.responses.present?) || (advice.member.is_deleted != false) %>
           <%= link_to new_problem_advice_response_path(@problem, advice_id: advice.id), class:"offset-3 col-3 btn btn-success" do %>
             <i class="fas fa-plus-circle"></i> 返事を投稿
           <% end %>
