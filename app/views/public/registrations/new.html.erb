@@ -25,30 +25,42 @@
   <%= form_with model: @member, url: member_registration_path, class:"form", local: true do |f| %>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :name, "ニックネーム", class:"col-3" %>
-    <%= f.text_field :name, autofocus: true, class:"col-3", placeholder:"ココロ タロウ" %>
+    <div class="col-4">
+      <%= f.label :name, "ニックネーム" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_field :name, autofocus: true, class:"col-3 form-control form-control-bg", placeholder:"ココロ タロウ" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :email, "メールアドレス", class:"col-3" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
+    <div class="col-4">
+      <%= f.label :email, "メールアドレス" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3 form-control form-control-bg", placeholder:"kokoro@taro.com" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :password, "パスワード（６文字以上）", class:"col-3" %>
+    <div class="col-4">
+      <%= f.label :password, "パスワード（６文字以上）" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
     <% if @minimum_password_length %>
     <em><% @minimum_password_length %></em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password", class:"col-3" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"col-3 form-control form-control-bg" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :password_confirmation, "パスワード（確認用）", class:"col-3" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-3" %>
+    <div class="col-4">
+      <%= f.label :password_confirmation, "パスワード（確認用）" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-3 form-control form-control-bg" %>
   </div>
 
-  <div class="actions row mr-5 pl-5 pb-3">
-    <div class="offset-3 col-3">
+  <div class="actions row mr-4 pl-5 pb-3">
+    <div class="offset-4 col-3">
     <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
       <i class="fas fa-user-plus"></i> 登録
     <% end %>

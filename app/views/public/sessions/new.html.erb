@@ -1,6 +1,6 @@
 <!--ページタイトルの指定-->
 <% content_for :title do %>
-  ログイン | kokoro room
+  会員ログイン | kokoro room
 <% end %>
 
 <div class="container pt-5">
@@ -34,17 +34,23 @@
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :email, "メールアドレス", class:"col-3" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
+    <div class="col-4">
+      <%= f.label :email, "メールアドレス" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-3 form-control form-control-bg", placeholder:"kokoro@taro.com" %>
   </div>
 
   <div class="field row pl-5 pb-3">
-    <%= f.label :password, "パスワード", class:"col-3" %>
-    <%= f.password_field :password, autocomplete: "current-password", class:"col-3" %>
+    <div class="col-4">
+      <%= f.label :password, "パスワード" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.password_field :password, autocomplete: "current-password", class:"col-3 form-control form-control-bg" %>
   </div>
 
-  <div class="actions row mr-5 pl-5 pb-3">
-    <div class="offset-3 col-3">
+  <div class="actions row mr-4 pl-5 pb-3">
+    <div class="offset-4 col-3">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-primary" do %>
         <i class="fas fa-sign-in-alt"></i> ログイン
       <% end %>
@@ -55,8 +61,8 @@
     <h5>LINEログインの方</h5>
   </div>
 
-  <div class="row mr-5 pl-5 pb-3">
-    <div class="offset-3 col-3">
+  <div class="row mr-4 pl-5 pb-3">
+    <div class="offset-4 col-4">
       <%= link_to member_line_omniauth_authorize_path, class:"form-control form-control-sm btn btn-success", method: :post do %>
         <i class="fab fa-line fa-lg"></i> LINEログイン
       <% end %>

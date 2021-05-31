@@ -25,22 +25,31 @@
   <%= form_with model: @contact, url: contacts_path, local:true do |f| %>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :name, "お名前", class:"col-3" %>
-    <%= f.text_field :name, autofocus: true, class:"col-3", placeholder:"ココロ タロウ" %>
+    <div class="col-4">
+      <%= f.label :name, "お名前" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_field :name, autofocus: true, class:"col-3 form-control form-control-bg", placeholder:"ココロ タロウ" %>
   </div>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :email, "メールアドレス", class:"col-3" %>
-    <%= f.email_field :email, autocomplete: "email", class:"col-3", placeholder:"kokoro@taro.com" %>
+    <div class="col-4">
+      <%= f.label :email, "メールアドレス" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.email_field :email, autocomplete: "email", class:"col-3 form-control form-control-bg", placeholder:"kokoro@taro.com" %>
   </div>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :body, "お問い合わせ内容", class:"col-3" %>
-    <%= f.text_area :body, class:"col-5", rows:"10", placeholder:"お問い合わせ内容を入力してください" %>
+    <div class="col-4">
+      <%= f.label :body, "お問い合わせ内容" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_area :body, class:"col-5 form-control form-control-bg", rows:"10", placeholder:"お問い合わせ内容を入力してください" %>
   </div>
 
-  <div class="row mr-5 pl-5 pb-5">
-    <div class="offset-3 col-3">
+  <div class="row mr-4 pl-5 pb-5">
+    <div class="offset-4 col-3">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
         <i class="far fa-envelope"></i> 送信
       <% end %>

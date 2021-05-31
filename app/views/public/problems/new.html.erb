@@ -17,23 +17,32 @@
   <%= form_with model: @problem, url: problems_path, local:true do |f| %>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :title, "タイトル", class:"col-3" %><br />
-    <%= f.text_field :title, class:"col-3", placeholder:"タイトルを入力してください" %>
+    <div class="col-4">
+      <%= f.label :title, "タイトル" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_field :title, class:"col-3 form-control form-control-bg", placeholder:"タイトルを入力してください" %>
   </div>
 
   <div class="row pl-5 pb-3">
-    <%= f.label :body, "悩み事の内容", class:"col-3" %><br />
-    <%= f.text_area :body, class:"col-5", rows:"10", placeholder:"悩み事の内容を入力してください" %>
+    <div class="col-4">
+      <%= f.label :body, "悩み事の内容" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_area :body, class:"col-5 form-control form-control-bg", rows:"10", placeholder:"悩み事の内容を入力してください" %>
   </div>
 
   <div class="row pl-5 pb-3">
     <!--カテゴリーをプルダウンメニューから選択-->
-    <%= f.label :category, "カテゴリー", class:"col-3" %><br />
-    <%= f.collection_select :category_id, Category.all, :id, :name, class:"col-3" %>
+    <div class="col-4">
+      <%= f.label :category, "カテゴリー" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.collection_select :category_id, Category.all, :id, :name, class:"col-3 form-control form-control-sm" %>
   </div>
 
-  <div class="row mr-5 pl-5 pb-3">
-    <div class="offset-3 col-3">
+  <div class="row mr-4 pl-5 pb-3">
+    <div class="offset-4 col-3">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
         <i class="fas fa-plus-circle"></i> 投稿
       <% end %>
