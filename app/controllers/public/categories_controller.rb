@@ -1,6 +1,7 @@
 class Public::CategoriesController < Public::ApplicationController
   def index
     @categories = Category.all
+    @members = Member.where(is_deleted: false)
   end
 
   def show

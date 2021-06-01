@@ -11,23 +11,25 @@
     </div>
   </div>
 
-  <table class="table table-hover w-50 pb-5">
+  <table class="table table-hover w-100 pb-5">
     <thead>
       <tr>
         <th>カテゴリー名</th>
-        <th>投稿された悩み事の数</th>
+        <th>投稿された悩み事の総数</th>
+        <th>回答受付中</th>
+        <th>解決済み</th>
+        <th>回答受付終了</th>
       </tr>
     </thead>
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-          <td>
-            <!--クリックしたカテゴリーに関する悩み事一覧画面へ遷移-->
-            <%= link_to category.name, category_path(category) %>
-          </td>
-          <td>
-            <%= category.problems.count %>
-          </td>
+          <!--クリックしたカテゴリーに関する悩み事一覧画面へ遷移-->
+          <td><%= link_to category.name, category_path(category) %></td>
+          <td><%= category.problems.count %>件</td>
+          <td><%= category.problems.where(best_answer_id: nil, member_id: @members.ids).count %>件</td>
+          <td><%= category.problems.where.not(best_answer_id: nil).count %>件</td>
+          <td><%= category.problems.where(best_answer_id: nil).where.not(member_id: @members.ids).count %>件</td>
         </tr>
       <% end %>
     </tbody>
