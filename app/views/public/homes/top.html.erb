@@ -38,10 +38,10 @@
   </div>
 
   <% if @problems.present? %>
-  <div class="row d-flex flex-wrap">
+  <div class="row d-flex flex-wrap pb-5">
     <% @problems.reverse_each do |problem| %>
 
-    <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
+    <div class="col-5 bg-light border border-secondary m-2 p-5 rounded">
       <!--ベストアンサーが決定済みであれば解決済みを表示、未決定であれば回答受付中を表示-->
       <% if problem.best_answer_id.present? %>
         <h5 class="text-success"><i class="fas fa-check-circle"></i> 解決済み</h5>

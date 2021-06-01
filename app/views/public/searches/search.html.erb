@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 
-<div class="container">
+<div class="container pb-5">
 
   <div class="row my-5">
     <div class="col-6">
@@ -26,7 +26,7 @@
 
     <% @datas.reverse_each do |data| %>
 
-    <div class="col-4 bg-light border border-secondary m-5 p-5 rounded">
+    <div class="col-5 bg-light border border-secondary m-2 p-5 rounded">
       <!--ベストアンサーが決定済みの場合-->
       <% if data.best_answer_id.present? %>
         <h5 class="text-success"><i class="fas fa-check-circle"></i> 解決済み</h5>
