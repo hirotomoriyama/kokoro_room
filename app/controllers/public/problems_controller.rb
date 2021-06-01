@@ -38,10 +38,13 @@ class Public::ProblemsController < Public::ApplicationController
 
   def destroy
     @problem = Problem.find(params[:id])
-    @problem.destroy
-    flash[:notice] = "悩み事を削除しました"
-    # 悩み削除後、トップページ（マイページ）へ遷移
-    redirect_to root_path
+    # 悩み事の投稿者がログインユーザーと一致していれば、削除可能
+    if @problem.member_id == current_member.id
+      @problem.destroy
+      flash[:notice] = "悩み事を削除しました"
+      # 悩み事削除後、トップページ（マイページ）へ遷移
+      redirect_to root_path
+    end
   end
 
   private

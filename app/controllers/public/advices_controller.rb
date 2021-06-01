@@ -27,10 +27,13 @@ class Public::AdvicesController < Public::ApplicationController
 
   def destroy
     @advice = Advice.find(params[:problem_id])
-    @advice.destroy
-    flash[:notice] = "回答を削除しました"
-    # 回答削除後、同じ画面に遷移
-    redirect_back(fallback_location: root_path)
+    # 回答の投稿者がログインユーザーと一致していれば、削除可能
+    if @advice.member_id == current_member.id
+      @advice.destroy
+      flash[:notice] = "回答を削除しました"
+      # 回答削除後、同じ画面に遷移
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

@@ -26,11 +26,14 @@ class Public::ResponsesController < Public::ApplicationController
   end
 
   def destroy
-    response = Response.find(params[:advice_id])
-    response.destroy
-    flash[:notice] = "返事を削除しました"
-    # 返事削除後、同じ画面に遷移
-    redirect_back(fallback_location: root_path)
+    @response = Response.find(params[:advice_id])
+    # 返事の投稿者がログインユーザーと一致していれば、削除可能
+    if @response.member_id == current_member.id
+      @response.destroy
+      flash[:notice] = "返事を削除しました"
+      # 返事削除後、同じ画面に遷移
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
