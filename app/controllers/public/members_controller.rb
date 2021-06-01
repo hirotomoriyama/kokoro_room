@@ -2,7 +2,8 @@ class Public::MembersController < Public::ApplicationController
   def show
     @member = current_member
     @problems = @member.problems
-    @unsolved_problems = Problem.where(member_id: @member.id, best_answer_id: nil)
+    @solved_problems = Problem.where.not(best_answer_id: nil).where(member_id: @member.id)
+    @unsolved_problems = Problem.where(best_answer_id: nil, member_id: @member.id)
   end
 
   def edit

@@ -21,7 +21,7 @@
 
   <div class="row pl-5 pb-3">
     <h5 class="col-4">悩み事の投稿総数</h5>
-    <p class="col-6"><%= @problems.count %>件（解決済み：<%= (@problems.count-@unsolved_problems.count) %>件、回答受付中：<%= @unsolved_problems.count %>件）</p>
+    <p class="col-6"><%= @problems.count %>件（解決済み：<%= (@solved_problems.count) %>件、回答受付中：<%= @unsolved_problems.count %>件）</p>
   </div>
 
   <div class="row pl-5 pb-3">
