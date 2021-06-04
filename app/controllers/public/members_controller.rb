@@ -15,10 +15,15 @@ class Public::MembersController < Public::ApplicationController
 
   def update
     @member = current_member
-    @member.update(member_params)
-    flash[:notice] = "マイページを編集しました"
-    # マイページ編集後、マイページへ遷移
-    redirect_to members_my_page_path
+    if @member.update(member_params)
+      flash[:notice] = "マイページを編集しました"
+      # マイページ編集後、マイページへ遷移
+      redirect_to members_my_page_path
+    else
+      flash.now[:alert] = "項目を入力してください"
+      # マイページ編集失敗後、同じ画面に遷移
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -51,8 +56,8 @@ class Public::MembersController < Public::ApplicationController
 
   private
 
-  # マイページ編集時、画像と文章を作成するための設定
+  # マイページ編集時、ニックネームとメールアドレスと画像を更新するための設定
   def member_params
-    params.require(:member).permit(:image, :body)
+    params.require(:member).permit(:name, :email, :image)
   end
 end

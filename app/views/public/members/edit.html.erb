@@ -41,16 +41,6 @@
     <%= f.attachment_field :image, class:"offset-4 col-6" %>
   </div>
 
-  <div class="row pl-5 pb-3">
-    <h5 class="col-4">悩み事の投稿総数</h5>
-    <p class="col-6"><%= @problems.count %>件（解決済み：<%= (@solved_problems.count) %>件、回答受付中：<%= @unsolved_problems.count %>件）</p>
-  </div>
-
-  <div class="row pl-5 pb-3">
-    <h5 class="col-4">回答の投稿総数</h5>
-    <p class="col-3"><%= @member.advices.count %>件</p>
-  </div>
-
   <div class="row mr-5 pl-5 pb-3">
     <div class="offset-4 col-4">
       <%= button_tag :type => "submit", :class => "form-control form-control-sm btn btn-success" do %>
