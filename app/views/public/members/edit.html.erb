@@ -1,17 +1,36 @@
 <!--ページタイトルの指定-->
 <% content_for :title do %>
-  <%= @member.name %>さんのマイページ編集 | kokoro room
+  マイページ編集 | kokoro room
 <% end %>
 
 <div class="container pb-5">
 
+  <!--エラーメッセージの表示-->
+  <%= render 'layouts/alert' %>
+
   <div class="row my-5">
     <div class="col-6">
-      <h2 class="mark text-center rounded"><%= @member.name %>さんのマイページ編集</h2>
+      <h2 class="mark text-center rounded">マイページ編集</h2>
     </div>
   </div>
 
   <%= form_with model: @member, url: members_my_page_path, local:true do |f| %>
+
+  <div class="row pl-5 pb-3">
+    <div class="col-4">
+      <%= f.label :name, "ニックネーム", class:"h5" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.text_field :name, autofocus: true, class:"col-3 form-control form-control-bg" %>
+  </div>
+
+  <div class="field row pl-5 pb-3">
+    <div class="col-4">
+      <%= f.label :email, "メールアドレス", class:"h5" %>
+      <span class="badge badge-danger">必須</span>
+    </div>
+    <%= f.email_field :email, autocomplete: "email", class:"col-3 form-control form-control-bg" %>
+  </div>
 
   <div class="row pl-5 pb-3">
     <%= f.label :image, "プロフィール画像", class:"col-4 h5" %>
@@ -24,7 +43,7 @@
 
   <div class="row pl-5 pb-3">
     <h5 class="col-4">悩み事の投稿総数</h5>
-    <p class="col-3"><%= @member.problems.count %>件</p>
+    <p class="col-6"><%= @problems.count %>件（解決済み：<%= (@solved_problems.count) %>件、回答受付中：<%= @unsolved_problems.count %>件）</p>
   </div>
 
   <div class="row pl-5 pb-3">

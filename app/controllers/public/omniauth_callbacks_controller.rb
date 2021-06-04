@@ -7,7 +7,6 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def basic_action
     @omniauth = request.env['omniauth.auth']
     # LINEアカウントのプロバイダーとUIDがあれば取得
-    pp request.env['omniauth.auth']
     if @omniauth.present?
       @profile = Member.where(provider: @omniauth['provider'], uid: @omniauth['uid']).first
       # memberモデルで作成したレコードがあればログイン

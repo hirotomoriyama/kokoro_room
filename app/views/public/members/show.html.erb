@@ -1,6 +1,6 @@
 <!--ページタイトルの指定-->
 <% content_for :title do %>
-  <%= @member.name %>さんのマイページ | kokoro room
+  マイページ | kokoro room
 <% end %>
 
 <div class="container pb-5">
@@ -10,8 +10,18 @@
 
   <div class="row my-5">
     <div class="col-6">
-      <h2 class="mark text-center rounded"><%= @member.name %>さんのマイページ</h2>
+      <h2 class="mark text-center rounded">マイページ</h2>
     </div>
+  </div>
+
+  <div class="row pl-5 pb-3">
+    <h5 class="col-4">ニックネーム</h5>
+    <p class="col-3"><%= @member.name %></p>
+  </div>
+
+  <div class="row pl-5 pb-3">
+    <h5 class="col-4">メールアドレス</h5>
+    <p class="col-3"><%= @member.email %></p>
   </div>
 
   <div class="row pl-5 pb-3">
@@ -35,7 +45,7 @@
     <% end %>
   </div>
 
-  <div class="row pl-5 pb-3">
+  <div class="row pl-5 pb-5">
     <%= link_to members_unsubscribe_path, class:"btn btn-danger offset-4 col-4" do %>
       <i class="fas fa-door-open"></i> 退会手続き
     <% end %>
