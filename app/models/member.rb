@@ -30,12 +30,14 @@ class Member < ApplicationRecord
   # refileの使用
   attachment :image
 
-  # メールアドレスのバリデーションにメールアドレスの形式ではない場合は除外し、一意性を付与
+  # メールアドレスの形式ではない場合は除外
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX } }
+  # メールアドレスに一意性を付与、大文字と小文字の判別を無くす
   validates :email, uniqueness: { case_sensitive: false }
   validates :encrypted_password, presence: true
-  validates :name, presence: true
+  # ニックネームに一意性を付与
+  validates :name, presence: true, uniqueness: true
 
   # 退会済みのユーザーが同じアカウントでログイン出来ないよう設定
   def active_for_authentication?
