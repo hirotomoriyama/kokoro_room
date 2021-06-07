@@ -34,22 +34,22 @@
 
   <div class="row pl-5">
     <h5 class="col-3">投稿日時</h5>
-    <p class="col-3"><%= @problem.created_at.to_s(:datetime_jp) %></p>
+    <p class="col-6"><%= @problem.created_at.to_s(:datetime_jp) %></p>
   </div>
 
   <div class="row pl-5">
     <h5 class="col-3">タイトル</h5>
-    <p class="col-3"><%= @problem.title %></p>
+    <p class="col-6"><%= @problem.title %></p>
   </div>
 
   <div class="row pl-5">
     <h5 class="col-3">悩み事の内容</h5>
-    <p class="col-3"><%= @problem.body %></p>
+    <p class="col-6"><%= @problem.body %></p>
   </div>
 
   <div class="row pl-5">
     <h5 class="col-3">カテゴリー</h5>
-    <p class="col-3"><%= @problem.category.name %></p>
+    <p class="col-6"><%= @problem.category.name %></p>
   </div>
 
   <!--自分の悩み事の投稿であれば、悩み事の削除リンクが表示-->
@@ -93,7 +93,7 @@
       </div>
       <div class="row">
         <!--ユーザーが退会していればニックネームを非表示-->
-        <h4 class="col-4">
+        <h4 class="col-6">
           <% if advice.member.is_deleted == false %>
             <i class="far fa-comment-dots"></i> <%= attachment_image_tag advice.member, :image, size:"40x40", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %> <%= advice.member.name %>さんからの回答
           <% else %>
@@ -109,7 +109,7 @@
     </div>
 
     <div class="row pl-3">
-      <p class="col-4"><%= advice.body %></p>
+      <p class="col-6"><%= advice.body %></p>
     </div>
 
     <!--いいね機能を非同期実装のため、パーシャル化-->
@@ -161,7 +161,7 @@
 
           <div class="row pt-3 pl-5">
             <!--ユーザーが退会していればニックネームを非表示-->
-            <h4 class="col-4">
+            <h4 class="col-6">
               <% if response.member.is_deleted == false %>
                 <i class="fas fa-reply fa-rotate-180"></i> <%= attachment_image_tag response.member, :image, size:"40x40", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %> <%= response.member.name %>さんからの返事
               <% else %>
@@ -176,7 +176,7 @@
           </div>
 
           <div class="row pl-5">
-            <p class="col-4"><%= response.body %></p>
+            <p class="col-6"><%= response.body %></p>
           </div>
 
           <!--5段階評価の星の表示-->
