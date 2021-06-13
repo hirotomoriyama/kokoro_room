@@ -67,6 +67,12 @@
   <%= render 'layouts/back' %>
 
   </div>
+
+  <div class="row pb-5">
+    <!--ページャのヘルパーを追加-->
+    <%= paginate @datas %>
+  </div>
+
 <!--検索欄に入力はあるが、検索結果が無い場合-->
 <% elsif (@datas.blank?) && (@content.present?) %>
   <p class="ml-5 pl-5">
