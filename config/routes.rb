@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 
     resource :contacts, only: [:new, :create]
 
+    get "contacts/complete" => "contacts#complete"
+
     get '/searches' => "searches#search"
   end
 end

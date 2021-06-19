@@ -10,14 +10,16 @@ class Public::ContactsController < Public::ApplicationController
     if @contact.save
       # メール送信の実行
       ContactMailer.contact_mail(@contact).deliver
-      flash[:notice] = 'お問い合わせ内容を送信しました'
-      # 問い合わせ内容投稿後、トップページ（マイページ）へ遷移
-      redirect_to root_path
+      # 問い合わせ内容投稿後、問い合わせ完了画面へ遷移
+      redirect_to contacts_complete_path
     else
       flash.now[:alert] = '項目を入力してください'
       # 問い合わせ内容投稿失敗後、問い合わせフォームへ遷移
       render :new
     end
+  end
+
+  def complete
   end
 
   private
