@@ -1,0 +1,21 @@
+<!--ページタイトルの指定-->
+<% content_for :title do %>
+  お問い合わせ内容を送信しました | kokoro room
+<% end %>
+
+<div class="container pt-5">
+  <div class="pt-5">
+    <h2 class="mark text-center rounded">お問い合わせ内容を送信しました</h2>
+  </div>
+  <div class="pt-3">
+    <p class="text-center">
+      お問い合わせいただき、ありがとうございます。<br />
+      確認の後、お送りいただいたメールアドレスにご返信させていただきます。
+    </p>
+  </div>
+  <div class="pt-3">
+    <p class="text-center">
+      <%= link_to 'トップページへ戻る', root_path %>
+    </p>
+  </div>
+</div>
